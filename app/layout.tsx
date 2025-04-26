@@ -1,6 +1,9 @@
+
 import type { Metadata } from "next";
 import { Roboto_Slab} from "next/font/google";
 import "./globals.css";
+import { Providers } from "./Providers";
+// import { SessionProvider } from "next-auth/react";
 
 const geistSans = Roboto_Slab({
   variable: "--font-roboto-slab",
@@ -24,13 +27,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} min-h-screen  antialiased`}
       >
-        <div className="min-h-screen absolute top-0 left-0 right-0 opacity-30 max-sm:opacity-40 -z-20"  style={{
-      backgroundImage: "url('./img/back.jpg')",
-      backgroundSize: 'contain',
-      backgroundPosition: 'center',
-      
-    }}></div>
-        {children}
+        
+       <Providers>
+
+          {children}
+       </Providers>
+       
       </body>
     </html>
   );
