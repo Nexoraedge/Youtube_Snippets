@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <header className='w-full z-50 h-20 flex items-center justify-between px-10 sm:px-15 backdrop-blur-lg'>
       <Link href={'/'}>
-        <Image src="/img/avatar.jpg" alt="logo" width={50} height={50} className='rounded-full object-contain' />
+        <Image src="/img/avatar.jpg" alt="logo" width={50} height={50} className='rounded-md object-contain' />
       </Link>
 
       <nav className='flex items-center justify-between'>
