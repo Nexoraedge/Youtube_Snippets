@@ -20,7 +20,9 @@
     to { opacity: 1; transform: translateY(0); }
   }
 }
-
+::-webkit-scrollbar{
+  width: 0px;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

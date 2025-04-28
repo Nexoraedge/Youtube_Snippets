@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react';
 import React from 'react';
 import TicTacToe from '@/components/TicTacToe';
 import { motion } from 'framer-motion';
+import { DummyData } from '@/constents/Data'
 import Card_Content from '@/components/Card_Content';
 
 const Page = () => {
@@ -25,23 +26,23 @@ const Page = () => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial="hidden"
       animate="show"
       variants={container}
-      className="flex flex-col gap-10 py-6 items-center justify-center text-white px-4"
+      className="flex flex-col gap-10 py-6 items-center text-white px-4"
     >
       {/* Greeting Header */}
-      <motion.h1 
+      <motion.h1
         variants={item}
         className="text-2xl sm:text-3xl mt-7  font-bold flex items-center justify-center flex-wrap"
       >
         Hello
-        <motion.span 
-          animate={{ 
+        <motion.span
+          animate={{
             backgroundPosition: ['0%', '100%'],
           }}
-          transition={{ 
+          transition={{
             duration: 3,
             repeat: Infinity,
             repeatType: "reverse"
@@ -51,54 +52,56 @@ const Page = () => {
           {name || "Player"}
         </motion.span>
         Welcome
-        <motion.img 
-          animate={{ 
+        <motion.img
+          animate={{
             rotate: [0, 10, -10, 0],
           }}
-          transition={{ 
+          transition={{
             duration: 2,
             repeat: Infinity,
             repeatType: "loop"
           }}
-          src="/asset/rose.gif" 
-          className="h-8 w-8 ml-2" 
-          alt="rose" 
+          src="/asset/rose.gif"
+          className="h-8 w-8 ml-2"
+          alt="rose"
         />
       </motion.h1>
 
       {/* Cards Section */}
-      <motion.div 
+      <motion.div
         variants={item}
-        className="flex flex-col sm:flex-row gap-7 w-full max-w-4xl items-center justify-center mb-6 h-full items-center"
+        className="flex flex-col  gap-7 w-full max-w-4xl  mb-6 h-full "
       >
 
-<motion.div 
+        <motion.div
           whileHover={{ scale: 1.01 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="flex flex-col w-full sm:w-1/2 bg-slate-800/50 backdrop-blur-md border border-purple-500/30 rounded-xl p-4 shadow-lg shadow-purple-500/10 "
+          className="flex flex-col w-full  bg-slate-800/50 backdrop-blur-md border border-purple-500/30 rounded-xl px-7 py-9 shadow-lg  overflow-y-hidden overflow-x-auto  shadow-purple-500/10 "
         >
-          <h2 className="text-xl font-bold text-center mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold text-center mb-14  bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mx-auto flex-wrap">
             My Content
           </h2>
-          <div className="space-y-3 text-base h-full flex flex-col justify-center">
-            <Card_Content />
+          <div className=" gap-7 max-md:gap-20 text-base h-full flex flex-col md:flex-row  justify-center">
+            {DummyData.map((DummyData, index) => (
+              <Card_Content key={index} data={DummyData} />
+            ))}
           </div>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           whileHover={{ scale: 1.01 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="flex flex-col w-full sm:w-1/2 bg-slate-800/50 backdrop-blur-md border border-purple-500/30 rounded-xl p-4 shadow-lg shadow-purple-500/10  " 
+          className="flex flex-col w-full bg-slate-800/50 backdrop-blur-md border border-purple-500/30 rounded-xl p-4 shadow-lg shadow-purple-500/10   mx-auto"
         >
-          <h2 className="text-xl font-bold text-center  bg-gradient-to-r from-blue-400 pb-3 to-purple-500 bg-clip-text text-transparent">
-            PLay a while
+          <h2 className="text-xl font-bold text-center  bg-gradient-to-r from-blue-400 my-7 pb-3 to-purple-500 bg-clip-text text-transparent">
+            Play a while
           </h2>
           <div className="flex justify-center items-center ]">
             <TicTacToe />
           </div>
         </motion.div>
 
-       
+
       </motion.div>
     </motion.div>
   );
