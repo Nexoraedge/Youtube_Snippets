@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} min-h-screen  antialiased`}
+        className={`${geistSans.variable} min-h-screen overflow-x-hidden  antialiased`}
       >
         
        <Providers>

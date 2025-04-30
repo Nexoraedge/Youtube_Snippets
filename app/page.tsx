@@ -1,5 +1,7 @@
-"use client"; 
+"use client";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import Mid from "@/components/Mid";
 import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -12,25 +14,27 @@ const Page = () => {
 
   useEffect(() => {
     if (status === "authenticated") {
-      router.push("/dashboard");  
+      router.push("/dashboard");
     }
   }, [status, router]);
 
   if (status === "loading") {
     return (
       <>
-        <Navbar />
-        <h1 className="text-4xl bg-zinc-400  mt-25 font-bold bg-clip-text text-center">
-          Loading...
-        </h1>
+        <div className="h-screen flex justify-center items-center">
+         <div className="loader"></div> 
+
+        </div>
       </>
     );
   }
 
   return (
     <>
-    <Navbar />
-     <Hero />
+      <Navbar />
+      <Hero />
+      <Mid />
+      <Footer />
     </>
   );
 };
