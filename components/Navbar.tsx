@@ -27,7 +27,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className='w-full z-50 h-20 flex items-center justify-between px-10 sm:px-15 backdrop-blur-lg'>
+    <header className='w-full z-50 h-20 flex items-center fixed top-0 justify-between px-10 sm:px-15 backdrop-blur-lg'>
       <Link href={'/'}>
         <Image src="/img/avatar.jpg" alt="logo" width={50} height={50} className='rounded-md object-contain' />
       </Link>
@@ -45,7 +45,12 @@ const Navbar = () => {
 
       {status === 'unauthenticated' ? (
         <Link href={'/login'}>
-          <button className="sign cursor-pointer hover-text">Login to your account</button>
+          <button  className="relative inline-flex h-12 max-sm:h-10  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                                <span className="absolute inset-[-1000%]  bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full max-sm:px-3  px-5 py-1 text-sm max-sm:text-xs font-medium text-white backdrop-blur-3xl">
+                                    Login to your account
+                                </span>
+                            </button>
         </Link>
       ) : (
         session?.user?.image && (

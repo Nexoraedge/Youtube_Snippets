@@ -1,6 +1,8 @@
 "use client"; 
+import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -27,10 +29,8 @@ const Page = () => {
 
   return (
     <>
-      <Navbar />
-      <h1 className="text-4xl text-center mt-10">
-        {/* Welcome {session?.user?.name || "Guest"}! */}
-      </h1>
+    <Navbar />
+     <Hero />
     </>
   );
 };

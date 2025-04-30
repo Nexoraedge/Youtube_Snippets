@@ -3,9 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const Card_Content = ({ data }) => {
+
+const Card_Content = ({data}) => {
   const { id, Title, desc, techstack, link, img } = data;
+  console.log(techstack);
   
+//  const tech_stack= stringify(techstack).replace(/"/g, "").replace(/,/g, " ");
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -84,7 +87,7 @@ const Card_Content = ({ data }) => {
         >
           <Link 
             href={link} 
-            target="_blank" 
+             
             className="link px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-medium rounded-full flex items-center gap-1 transition-all duration-300 shadow-md shadow-purple-900/50 hover:shadow-lg hover:shadow-purple-800/50"
           >
             <span>View Project</span>
@@ -96,7 +99,7 @@ const Card_Content = ({ data }) => {
         </motion.div>
       </div>
       
-      {/* Decorative element */}
+     
       <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-purple-950/50 to-transparent pointer-events-none"></div>
     </motion.div>
   );

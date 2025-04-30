@@ -32,7 +32,7 @@ const Page = () => {
       variants={container}
       className="flex flex-col gap-10 py-6 items-center text-white px-4"
     >
-      {/* Greeting Header */}
+     
       <motion.h1
         variants={item}
         className="text-2xl sm:text-3xl mt-7  font-bold flex items-center justify-center flex-wrap"
@@ -67,7 +67,7 @@ const Page = () => {
         />
       </motion.h1>
 
-      {/* Cards Section */}
+      
       <motion.div
         variants={item}
         className="flex flex-col  gap-7 w-full max-w-4xl  mb-6 h-full "
