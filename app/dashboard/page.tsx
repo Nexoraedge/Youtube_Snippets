@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useSession } from 'next-auth/react';
 import React from 'react';
 import TicTacToe from '@/components/TicTacToe';
@@ -6,10 +6,11 @@ import { motion } from 'framer-motion';
 import { DummyData } from '@/constents/Data'
 import Card_Content from '@/components/Card_Content';
 
+
 const Page = () => {
+ 
   const { data: session, status } = useSession();
   const { name, email, image } = session?.user || {};
-
   const container = {
     hidden: { opacity: 0 },
     show: {

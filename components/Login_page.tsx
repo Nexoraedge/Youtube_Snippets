@@ -5,6 +5,7 @@ import Link from "next/link"
 import { redirect } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
+
 const Login_page = () => {
     const {data:session , status} = useSession()
     if(status === 'authenticated'){

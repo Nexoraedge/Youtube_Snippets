@@ -78,3 +78,12 @@ export async function POST(req: Request) {
     );
   }
 }
+export async function GET() { 
+  const {data , error} = await supabase.from("Users").select("*")
+
+  if (error) {
+    return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 });
+  }
+
+  return NextResponse.json({ users: data }, { status: 200 });
+}
