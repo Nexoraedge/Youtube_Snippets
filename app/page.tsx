@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Mid from "@/components/Mid";
 import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 

@@ -26,16 +26,17 @@ const Page = () => {
   };
 
   return (
+    <section className='mt-14'>
     <motion.div
       initial="hidden"
       animate="show"
       variants={container}
-      className="flex flex-col gap-10 mt-20 py-6 items-center text-white px-4"
+      className="flex flex-col gap-10  py-6 items-center text-white px-4"
     >
 
       <motion.h1
         variants={item}
-        className="text-2xl sm:text-3xl mt-7  font-bold flex items-center justify-center flex-wrap"
+        className="text-3xl md:text-5xl mt-7  font-bold flex items-center justify-center flex-wrap"
       >
         Hello
         <motion.span
@@ -78,7 +79,7 @@ const Page = () => {
           transition={{ type: "spring", stiffness: 300 }}
           className="flex flex-col w-full  bg-slate-800/50 backdrop-blur-md border border-purple-500/30 rounded-xl px-7 py-9 shadow-lg  overflow-y-hidden overflow-x-auto  shadow-purple-500/10 "
         >
-          <h2 className="text-xl font-bold text-center mb-14  bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mx-auto flex-wrap">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-14  bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mx-auto flex-wrap">
             My Content
           </h2>
           <div className=" gap-7 max-md:gap-20 text-base h-full flex flex-col md:flex-row  justify-center">
@@ -93,7 +94,7 @@ const Page = () => {
           transition={{ type: "spring", stiffness: 300 }}
           className="flex flex-col w-full bg-slate-800/50 backdrop-blur-md border border-purple-500/30 rounded-xl p-4 shadow-lg shadow-purple-500/10   mx-auto"
         >
-          <h2 className="text-xl font-bold text-center  bg-gradient-to-r from-blue-400 my-7 pb-3 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl font-bold text-center  bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Play a while
           </h2>
           <div className="flex justify-center items-center ]">
@@ -104,6 +105,7 @@ const Page = () => {
 
       </motion.div>
     </motion.div>
+    </section>
   );
 };
 
