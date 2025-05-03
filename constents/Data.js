@@ -18,6 +18,46 @@ export const DummyData = [
     },
 
 ]
+export const links = [
+    {
+        id: 1,
+        title: "Github- Source Code",
+        img: "/icons/github.png",
+        link: "https://github.com/Nexoraedge/",
+
+    },
+    {
+        id: 2,
+        title: "Snippet",
+        img: "/icons/snippet.png",
+        link: "#",
+
+    },
+    {
+        id: 3,
+        title: "SetCode",
+        img: "/icons/link.png",
+        link: "#",
+
+    },
+    {
+        id: 4,
+        title: "initial file",
+        img: "/icons/link.png",
+        link: "#",
+
+    },
+    {
+        id: 5,
+        title: "reddit",
+        img: "/icons/reddit.png",
+        link: "#",
+
+    },
+
+
+
+];
 
 export const Is_fordata = [
     {
@@ -28,7 +68,7 @@ export const Is_fordata = [
         color: "#61DBFB"
     },
     {
-    id: 2,
+        id: 2,
         img: "/asset/youtube.png",
         title: "02. Tutorial Loopers",
         description: "You binge-watch coding videos but never hit 'deploy'.",

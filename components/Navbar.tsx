@@ -28,17 +28,17 @@ const Navbar = () => {
 
   return (
     <header className='w-full z-50 h-20 flex items-center fixed top-0 justify-between px-10 sm:px-15 backdrop-blur-lg'>
-      <Link href={'/'}>
+      <Link href={session?.user ? "/dashboard" : '/'}>
         <Image src="/img/avatar.jpg" alt="logo" width={50} height={50} className='rounded-md object-contain' />
       </Link>
 
       <nav className='flex items-center justify-between'>
         <ul className='list-none flex max-sm:hidden gap-12'>
-          <li className='hover-text cursor-pointer'>
-            <Link href='/' className='hover-text'>Resources</Link>
+          <li className='hover-text cursor-pointer flex gap-1'>
+            <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} /> Resources
           </li>
-          <li className='hover-text cursor-pointer'>
-            <Link href='/' className='hover-text'>Test_Links</Link>
+          <li className='hover-text cursor-pointer flex gap-1'>
+            <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} /> Test_Links
           </li>
         </ul>
       </nav>
@@ -71,21 +71,23 @@ const Navbar = () => {
 
             {open && (
               <div className="absolute top-16 right-0 w-44 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 animate-fade-in">
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                <ul className=" text-sm py-2 text-gray-700 dark:text-gray-200">
                   <li>
-                    <Link href="/dashboard" className="block px-4 py-2 bg-gray-700 ">Dashboard</Link>
+                    <Link href="/dashboard" className="flex gap-2 items-center px-4 py-2  bg-gray-700 ">
+                    <Image src={"/asset/home.gif"} alt="dashboard" width={20} height={20} />Dashboard</Link>
                   </li>
                   <li>
-                    <Link href="/dashboard" className="block px-4 py-2 text-gray-500 flex gap-2">
+                    <Link href="/dashboard" className=" px-4 py-2 text-gray-500 items-center flex gap-2">
                    <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} />Settings
                     </Link>
                   </li>
                 </ul>
-                <div className="py-2 border-t dark:border-gray-600">
+                <div className=" border-t dark:border-gray-600">
                   <button
                     onClick={() => signOut({ callbackUrl: '/' })}
-                    className="w-full text-left cursor-pointer block px-4 py-2 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-red-400 dark:hover:text-white"
+                    className="w-full text-left cursor-pointer flex gap-2 items-center px-4 py-2 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-red-400 dark:hover:text-white"
                   >
+                    <Image src={"/asset/exit.gif"} alt="signOut" width={20} height={20} />
                     Sign out
                   </button>
                 </div>

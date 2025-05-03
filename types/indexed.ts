@@ -11,4 +11,8 @@ interface card_data{
   techstack:string[],
   description:string,
   link:string,
+  cover:string,
+  links:string[],
+  ytvidlink:string,
+  Share_link:string,
 }

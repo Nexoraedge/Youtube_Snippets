@@ -14,7 +14,6 @@ const Page = () => {
   
  const [datastatus , setDatastatus] = useState("loading");
   const { data: session, status } = useSession();
-  const { username } = session?.user || {};
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -35,6 +34,8 @@ const Page = () => {
     fetchData();
 
   }, [])
+  console.log(card_passingdata);
+ 
  
  
   
@@ -56,7 +57,7 @@ const Page = () => {
 
       <motion.h1
         variants={item}
-        className="text-3xl md:text-5xl mt-7  font-bold flex items-center justify-center flex-wrap"
+        className="text-3xl md:text-5xl mt-7   font-bold flex items-center justify-center flex-wrap"
       >
         Hello
         <motion.span
@@ -70,7 +71,7 @@ const Page = () => {
           }}
           className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 bg-clip-text text-transparent mx-2 px-1"
         >
-          {username || "Player"}
+          {session?.user?.name|| "Player"}
         </motion.span>
         Welcome
         <motion.img
@@ -116,7 +117,7 @@ const Page = () => {
           transition={{ type: "spring", stiffness: 300 }}
           className="flex flex-col w-full bg-slate-800/50 backdrop-blur-md border border-purple-500/30 rounded-xl p-4 shadow-lg shadow-purple-500/10   mx-auto"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-center  bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-7  bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Play a while
           </h2>
           <div className="flex justify-center items-center ]">

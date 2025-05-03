@@ -1,7 +1,7 @@
 import { User } from "@/types/database";
 
 export async function getUsers(): Promise<User | null> {
-    const res = await fetch('/api/users', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/users`, {
         method: 'GET',
     });
 
@@ -13,7 +13,7 @@ export async function getUsers(): Promise<User | null> {
     return data.users;
 }
 export async function getCardData() {
-    const res = await fetch('/api/data', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data`, {
         method: 'GET',
     });
 
@@ -24,7 +24,17 @@ export async function getCardData() {
     const data = await res.json();
     return data.projects;
 }
-export async function isAuthenticated() {
-  const user =await getUsers();
-  return !! user;
+export async function getCurrentData(uid:number) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data/`, {
+        method: 'GET',
+    });
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch projects');
+    }
+
+    const data = await res.json();
+    
+    const filteredData = data.projects.filter((project:any)=>project.id==uid);
+    return filteredData;
 }

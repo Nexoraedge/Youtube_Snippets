@@ -34,12 +34,18 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen ">
       {/* Sidebar */}
+      <div className="min-h-screen absolute top-0 left-0 right-0 opacity-60 max-sm:opacity-40 -z-20" style={{
+                backgroundImage: "url('./img/bg-dev.jpeg')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+
+            }}></div>
       <div
         className={`${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 left-0 z-30 w-64 transform bg-gray-800 transition duration-300 ease-in-out md:relative md:translate-x-0`}
+        } fixed inset-y-0 left-0 z-30 w-64 transform transition duration-300 ease-in-out md:relative md:translate-x-0`}
       >
         <div className="flex h-16 items-center justify-center border-b border-gray-700">
           <h2 className="text-xl font-semibold text-white">Admin Dashboard</h2>
@@ -49,8 +55,8 @@ export default function AdminLayout({
             <Link href="/admin/dashboard" className="flex items-center rounded-md px-4 py-2 text-gray-100 hover:bg-gray-700">
               Dashboard
             </Link>
-            <Link href="/admin/users" className="flex items-center rounded-md px-4 py-2 text-gray-100 hover:bg-gray-700">
-              Users
+            <Link href="/admin/upload" className="flex items-center rounded-md px-4 py-2 text-gray-100 hover:bg-gray-700">
+              Upload
             </Link>
             <Link href="/admin/settings" className="flex items-center rounded-md px-4 py-2 text-gray-100 hover:bg-gray-700">
               Settings
@@ -73,9 +79,9 @@ export default function AdminLayout({
           </button>
           
           <div className="ml-auto flex items-center">
-            {session?.user?.username && (
+            {session?.user?.name && (
               <span className="mr-4 text-sm font-medium text-gray-700">
-                Hello, {session.user.username}
+                Hello, {session.user.name}
               </span>
             )}
             <Link href="/api/auth/signout" className="rounded-md bg-red-500 px-3 py-1 text-sm font-medium text-white hover:bg-red-600">

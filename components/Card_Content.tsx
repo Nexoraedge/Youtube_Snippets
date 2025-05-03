@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 
 const Card_Content = ({data}: {data: card_data}) => {
-  const { id, title, description, techstack, link, img } = data;  
+  const { title, description, techstack, link, img } = data;  
    
   return (
     <motion.div

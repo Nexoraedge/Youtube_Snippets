@@ -23,7 +23,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   }
   return (
     <div className="min-h-screen bg-gradient-to-b -z-10 from-[#0f0c29] via-[#302b63]  to-[#24243e]">
-      {/* <div className="absolute top-0 left-0 right-0  h-[100%]"/> */}
+  
       <Navbar />
       {children}
       <Footer />

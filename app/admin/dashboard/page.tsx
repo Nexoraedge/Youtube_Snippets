@@ -1,6 +1,17 @@
-"use client";
+import { getCardData, getUsers } from "@/lib/actions/general.action";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const user = await getUsers();
+  console.log(user);
+  const totalUsers = user?.length;
+  console.log(totalUsers);
+  const data = await getCardData();
+  const totalcard = data?.length;
+  console.log(totalcard);
+   
+  
   return (
     <div>
       <h1 className="mb-6 text-2xl font-semibold text-gray-800">Dashboard Overview</h1>
@@ -16,7 +27,7 @@ export default function Dashboard() {
             </div>
             <div className="ml-4">
               <h2 className="font-medium text-gray-600">Total Users</h2>
-              <p className="text-2xl font-semibold text-gray-800">120</p>
+              <p className="text-2xl font-semibold text-gray-800">{totalUsers}</p>
             </div>
           </div>
         </div>
@@ -44,7 +55,7 @@ export default function Dashboard() {
             </div>
             <div className="ml-4">
               <h2 className="font-medium text-gray-600">Content Items</h2>
-              <p className="text-2xl font-semibold text-gray-800">42</p>
+              <p className="text-2xl font-semibold text-gray-800">{totalcard}</p>
             </div>
           </div>
         </div>
@@ -116,11 +127,13 @@ export default function Dashboard() {
               </svg>
               Add New User
             </button>
-            <button className="flex items-center justify-center rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-white hover:bg-green-600">
+            <button
+            
+            className="flex items-center justify-center rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-white hover:bg-green-600">
               <svg className="mr-2 h-4 w-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M12 4v16m8-8H4"></path>
               </svg>
-              Create Content
+              <Link href="/admin/upload">Create Content</Link>
             </button>
             <button className="flex items-center justify-center rounded-md bg-purple-500 px-4 py-2 text-sm font-medium text-white hover:bg-purple-600">
               <svg className="mr-2 h-4 w-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
