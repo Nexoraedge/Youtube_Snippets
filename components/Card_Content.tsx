@@ -4,11 +4,9 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 
-const Card_Content = ({data}) => {
-  const { id, Title, desc, techstack, link, img } = data;
-  console.log(techstack);
-  
-//  const tech_stack= stringify(techstack).replace(/"/g, "").replace(/,/g, " ");
+const Card_Content = ({data}: {data: card_data}) => {
+  const { id, title, description, techstack, link, img } = data;  
+   
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -24,8 +22,8 @@ const Card_Content = ({data}) => {
         stiffness: 400, 
         damping: 17 
       }}
-      id={id} 
-      key={id} 
+      
+      
       className="w-full flex flex-col relative bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 backdrop-blur-sm rounded-2xl p-6 sm:p-5   h-auto min-h-[440px] md:h-[450px] shadow-lg shadow-purple-900/30 border border-purple-800/30"
     >
       
@@ -39,7 +37,7 @@ const Card_Content = ({data}) => {
         <div className="bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-lg p-2 shadow-lg inline-block">
           <Image 
             src={img} 
-            alt={Title} 
+            alt={title} 
             width={100} 
             height={100} 
             className="rounded-md object-contain hover:rotate-3 transition-all duration-300" 
@@ -54,8 +52,8 @@ const Card_Content = ({data}) => {
         transition={{ delay: 0.1 }}
         className="flex relative -top-6 flex-col gap-4"
       >
-        <h2 className="title font-bold tracking-wider text-xl sm:text-2xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">{Title}</h2>
-        <p className="desc font-medium text-gray-300/90 overflow-hidden line-clamp-5 sm:line-clamp-6">{desc}</p>
+        <h2 className="title font-bold tracking-wider text-xl sm:text-2xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">{title}</h2>
+        <p className="description font-medium text-gray-300/90 overflow-hidden line-clamp-5 sm:line-clamp-6">{description}</p>
       </motion.div>
       
       {/* Footer with tech stack and link */}
@@ -64,7 +62,7 @@ const Card_Content = ({data}) => {
           whileHover={{ scale: 1.05 }}
           className="techstack p-1.5 flex -space-x-2.5 relative rounded-full bg-gradient-to-r from-purple-800 to-purple-900 shadow-inner shadow-purple-950 border border-purple-700/50"
         >
-          {techstack.map((tech, index) => (
+          {techstack.map((tech, index:number) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.2, zIndex: 10 }}

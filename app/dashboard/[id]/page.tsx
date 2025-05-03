@@ -2,9 +2,9 @@ import React from 'react'
 
 const page = async(params:RouteParams) => {
   const  {id}  = await params.params;
-  
+   
   return (
-    <div>ID =
+    <div className='flex justify-center items-center h-screen'>ID =
      {id}
     </div>
   )

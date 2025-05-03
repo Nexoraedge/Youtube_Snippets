@@ -5,19 +5,9 @@ export type User = {
     email: string;
     username: string;
     created_at: string;
+    role:string;
   }
 
-export async function getUsers() {
-  const res = await fetch('/api/users', {
-    method: 'GET',
-  });
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch users');
-  }
-
-  const data = await res.json();
-  return data.users;
-}
 
 

@@ -7,14 +7,14 @@ const Whoissec = () => {
   return (
     <div className='flex flex-col relative right-2 items-center justify-center  md:mt-16 mt-7 gap-12'>
         {
-          Is_fordata.map(({id , color , Title , desc , img}, index) => (
+          Is_fordata.map(({id , color , title , description , img}, index) => (
             <div key={id} className="flex gap-2 mx-2 overflow-x-hidden md:gap-4">
               <div className="w-1/4 flex justify-center items-center">
               <Image src={img} alt="img" width={110} height={110} className='rounded-xl' />
               </div>
               <div className="w-3/4 flex gap-2 flex-col">
-              <h3 style={{color:color}} className={`text-xl md:text-2xl font-bold`}>{Title}</h3>
-              <p className='md:text-lg font-normal flex flex-wrap'>{desc}</p>
+              <h3 style={{color:color}} className={`text-xl md:text-2xl font-bold`}>{title}</h3>
+              <p className='md:text-lg font-normal flex flex-wrap'>{description}</p>
               </div>
             </div>
           ))

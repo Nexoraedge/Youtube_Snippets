@@ -1,16 +1,20 @@
 "use client"
 import { useSession } from 'next-auth/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TicTacToe from '@/components/TicTacToe';
 import { motion } from 'framer-motion';
 import { DummyData } from '@/constents/Data'
 import Card_Content from '@/components/Card_Content';
+import { getCardData } from '@/lib/actions/general.action';
 
 
-const Page = () => {
- 
+const Page = () => { 
+  const [card_passingdata, setCard_passingdata] = useState([])
+  let a:any;
+  
+ const [datastatus , setDatastatus] = useState("loading");
   const { data: session, status } = useSession();
-  const { name, email, image } = session?.user || {};
+  const { username } = session?.user || {};
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -20,11 +24,26 @@ const Page = () => {
       }
     }
   };
+   
+  useEffect(() => {
+    const fetchData=async()=>{
+      setDatastatus("loading");
+     a=await getCardData();
+     setCard_passingdata(a);
+     setDatastatus("authenticated");
+    }
+    fetchData();
 
+  }, [])
+ 
+ 
+  
   const item = {
     hidden: { y: 20, opacity: 0 },
     show: { y: 0, opacity: 1 }
   };
+
+
 
   return (
     <section className='mt-14'>
@@ -51,7 +70,7 @@ const Page = () => {
           }}
           className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 bg-clip-text text-transparent mx-2 px-1"
         >
-          {name || "Player"}
+          {username || "Player"}
         </motion.span>
         Welcome
         <motion.img
@@ -84,9 +103,11 @@ const Page = () => {
             My Content
           </h2>
           <div className=" gap-7 max-md:gap-20 text-base h-full flex flex-col md:flex-row  justify-center">
-            {DummyData.map((DummyData, index) => (
-              <Card_Content key={index} data={DummyData} />
-            ))}
+            {datastatus === "authenticated" ? card_passingdata.map((card_passingdata, index:number) => (
+              <Card_Content key={index} data={card_passingdata} />
+            )) : <div className=" flex justify-center items-center">
+            <div className="loader"></div>
+          </div>}
           </div>
         </motion.div>
 
