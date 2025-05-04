@@ -15,6 +15,10 @@ export const DummyData = [
         description: "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.Lorem ipsum dolor sit amet consectetur adipisicing elit.Quisquam, voluptatibus.Lorem ipsum dolor sit amet consectetur adipisicing elit.Quisquam, voluptatibus.Lorem ipsum dolor sit amet consectetur adipisicing elit.Quisquam, voluptatibus",
         link: `${process.env.NEXT_PUBLIC_URL}/dashboard/2345123`,
         techstack: ["/asset/react.png", "/asset/bird.png"],
+        cover:"/img/avatar.jpg",
+        links:[{"id":1,"img":"/icons/github.png","link":"https://github.com/Nexoraedge/","title":"Github- Source Code"},{"id":2,"img":"/icons/snippet.png","link":"#","title":"Snippet"},{"id":3,"img":"/icons/link.png","link":"#","title":"SetCode"},{"id":4,"img":"/icons/link.png","link":"#","title":"initial file"},{"id":5,"img":"/icons/reddit.png","link":"#","title":"reddit"}],
+        ytvidlink:"https://www.youtube.com/embed/MAFHmyURRXo?si=kcnUBl-Dh23JaBqx",
+        Share_link:"https://www.youtube.com/watch?v=QH2-TGUlwu4",
     },
 
 ]

@@ -24,8 +24,7 @@ export async function POST(req: Request) {
 
 
     if (fetchError && fetchError.code !== 'PGRST116') {
-      console.error('Error checking for existing user:', fetchError);
-      return NextResponse.json(
+        return NextResponse.json(
         { error: 'Failed to check if user exists' },
         { status: 500 }
       );
@@ -43,19 +42,16 @@ export async function POST(req: Request) {
     }
 
     // Step 2: Insert user
-    console.log('Attempting to insert user with data:', { email, username });
     const { data, error: insertError } = await supabase
       .from('Users')
       .insert([{ email, username }])
       .select();
 
     if (insertError) {
-      console.error('Detailed insert error:', JSON.stringify(insertError, null, 2));
       return NextResponse.json({ error: 'Failed to create user', details: insertError }, { status: 500 });
     }
 
     if (insertError) {
-      console.error('Error creating user:', insertError);
       return NextResponse.json(
         { error: 'Failed to create user' },
         { status: 500 }
@@ -71,7 +67,6 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error('Unexpected error in user creation:', error);
     return NextResponse.json(
       { error: 'An unexpected error occurred' },
       { status: 500 }

@@ -109,7 +109,6 @@ const handler = NextAuth({
           .insert([{ email, username: user.name || email.split("@")[0] }]);
 
         if (insertError) {
-          console.error("Failed to insert user:", insertError);
           return false;
         }
       }

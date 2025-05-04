@@ -1,26 +1,21 @@
 import { getCardData, getUsers } from "@/lib/actions/general.action";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 export default async function Dashboard() {
   const user = await getUsers();
-  console.log(user);
   const totalUsers = user?.length;
-  console.log(totalUsers);
   const data = await getCardData();
-  const totalcard = data?.length;
-  console.log(totalcard);
-   
+  const totalcard = data?.length;   
   
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-semibold text-gray-800">Dashboard Overview</h1>
+      <h1 className="mb-6 text-2xl font-semibold text-gray-300">Dashboard Overview</h1>
       
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {/* Stats Cards */}
-        <div className="rounded-lg bg-white p-6 shadow-sm">
+      
+        <div className="rounded-lg  backdrop-blur-2xl bg-gray-400 p-6 shadow-sm">
           <div className="flex items-center">
-            <div className="rounded-full bg-blue-100 p-3">
+            <div className="rounded-full bg-blue-200 p-3">
               <svg className="h-6 w-6 text-blue-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
               </svg>
@@ -32,7 +27,7 @@ export default async function Dashboard() {
           </div>
         </div>
         
-        <div className="rounded-lg bg-white p-6 shadow-sm">
+        <div className="rounded-lg backdrop-blur-2xl bg-gray-400 p-6 shadow-sm">
           <div className="flex items-center">
             <div className="rounded-full bg-green-100 p-3">
               <svg className="h-6 w-6 text-green-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -46,7 +41,7 @@ export default async function Dashboard() {
           </div>
         </div>
         
-        <div className="rounded-lg bg-white p-6 shadow-sm">
+        <div className="rounded-lg backdrop-blur-2xl bg-gray-400 p-6 shadow-sm">
           <div className="flex items-center">
             <div className="rounded-full bg-purple-100 p-3">
               <svg className="h-6 w-6 text-purple-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -60,7 +55,7 @@ export default async function Dashboard() {
           </div>
         </div>
         
-        <div className="rounded-lg bg-white p-6 shadow-sm">
+        <div className="rounded-lg backdrop-blur-2xl bg-gray-400 p-6 shadow-sm">
           <div className="flex items-center">
             <div className="rounded-full bg-yellow-100 p-3">
               <svg className="h-6 w-6 text-yellow-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,7 +73,7 @@ export default async function Dashboard() {
       
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Recent Activity Section */}
-        <div className="rounded-lg bg-white p-6 shadow-sm">
+        <div className="rounded-lg backdrop-blur-2xl bg-gray-400 p-6 shadow-sm">
           <h2 className="mb-4 text-lg font-medium text-gray-700">Recent Activity</h2>
           <div className="space-y-4">
             <div className="flex items-start">
@@ -118,10 +113,10 @@ export default async function Dashboard() {
         </div>
         
         {/* Quick Actions Section */}
-        <div className="rounded-lg bg-white p-6 shadow-sm">
+        <div className="rounded-lg backdrop-blur-2xl bg-gray-400 p-6 shadow-sm">
           <h2 className="mb-4 text-lg font-medium text-gray-700">Quick Actions</h2>
           <div className="grid grid-cols-2 gap-4">
-            <button className="flex items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600">
+            <button className="flex cursor-pointer items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600">
               <svg className="mr-2 h-4 w-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
@@ -129,19 +124,19 @@ export default async function Dashboard() {
             </button>
             <button
             
-            className="flex items-center justify-center rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-white hover:bg-green-600">
+            className="flex cursor-pointer items-center justify-center rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-white hover:bg-green-600">
               <svg className="mr-2 h-4 w-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M12 4v16m8-8H4"></path>
               </svg>
               <Link href="/admin/upload">Create Content</Link>
             </button>
-            <button className="flex items-center justify-center rounded-md bg-purple-500 px-4 py-2 text-sm font-medium text-white hover:bg-purple-600">
+            <button className="flex cursor-pointer items-center justify-center rounded-md bg-purple-500 px-4 py-2 text-sm font-medium text-white hover:bg-purple-600">
               <svg className="mr-2 h-4 w-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
               Generate Report
             </button>
-            <button className="flex items-center justify-center rounded-md bg-yellow-500 px-4 py-2 text-sm font-medium text-white hover:bg-yellow-600">
+            <button className="flex cursor-pointer items-center justify-center rounded-md bg-yellow-500 px-4 py-2 text-sm font-medium text-white hover:bg-yellow-600">
               <svg className="mr-2 h-4 w-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                 <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>

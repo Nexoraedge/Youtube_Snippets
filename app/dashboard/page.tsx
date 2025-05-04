@@ -34,9 +34,6 @@ const Page = () => {
     fetchData();
 
   }, [])
-  console.log(card_passingdata);
- 
- 
  
   
   const item = {
