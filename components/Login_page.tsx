@@ -67,7 +67,7 @@ const Login_page = ({
                   alt="cover"
                   width={100}
                   height={100}
-                  className="w-24 md:w-20 lg:w-30 rounded-xl"
+                  className="w-20  rounded-xl"
                 />
               </div>
               <div className="text">

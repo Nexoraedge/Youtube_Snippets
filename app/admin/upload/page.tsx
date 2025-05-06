@@ -76,7 +76,7 @@ export default function UploadPage() {
       formDataForUpload.append("file", file);
 
       // Upload file to Supabase Storage
-      const response = await fetch("http://localhost:3000/api/upload", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/upload`, {
         method: "POST",
         body: formDataForUpload,
       });
@@ -158,7 +158,7 @@ export default function UploadPage() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/data", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
