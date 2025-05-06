@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { User } from "@/types/database";
 
 export async function getUsers(): Promise<User | null> {
