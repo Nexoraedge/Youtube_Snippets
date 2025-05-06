@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Roboto_Slab} from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 // import { SessionProvider } from "next-auth/react";
 
 const geistSans = Roboto_Slab({
@@ -30,8 +32,9 @@ export default async function RootLayout({
       >
         
        <Providers>
-
+       
           {children}
+    
        </Providers>
        
       </body>

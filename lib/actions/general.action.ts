@@ -39,3 +39,4 @@ export async function getCurrentData(uid:number) {
     const filteredData = data.projects.filter((project:any)=>project.id==uid);
     return filteredData;
 }
+

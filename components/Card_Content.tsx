@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 
 const Card_Content = ({data}: {data: card_data}) => {
-  const { title, description, techstack, link, img } = data;  
+  const { title, description, techstack, link, img , id } = data;  
    
   return (
     <motion.div
@@ -84,7 +84,7 @@ const Card_Content = ({data}: {data: card_data}) => {
           whileTap={{ scale: 0.95 }}
         >
           <Link 
-            href={`${link}`} 
+            href={`${process.env.NEXT_PUBLIC_URL}/${id}/`} 
              
             className="link px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-medium rounded-full flex items-center gap-1 transition-all duration-300 shadow-md shadow-purple-900/50 hover:shadow-lg hover:shadow-purple-800/50"
           >

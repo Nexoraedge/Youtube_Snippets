@@ -1,14 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-const VideoKitPage = (data: card_data) => {
+const VideoKitPage = (props: card_data) => {
+  const router = useRouter();
+  const { title, cover, links, ytvidlink, Share_link, id } = props;
+  const { status } = useSession();
+  console.log(id);
+  useEffect(() => {
+    if (status !== "loading" && status === "unauthenticated") {
+      router.push(`/login/${id}/`);
+    }
     
-  const { title,  cover, links , ytvidlink , Share_link } = data;
-
-  
+  }, [status, id]);
 
   return (
     <section className="min-h-screen py-12 mt-12  text-white">
@@ -45,7 +54,7 @@ const VideoKitPage = (data: card_data) => {
                       {title}
                     </h2>
                     <Link
-                    target="_blank"
+                      target="_blank"
                       href={Share_link}
                       className="text-zinc-300 flex gap-3 text-sm pl-5"
                     >
@@ -60,44 +69,43 @@ const VideoKitPage = (data: card_data) => {
                     </Link>
                   </div>
                 </div>
-                {links.map((link , index) => (
-                 
+                {links.map((link, index) => (
                   <motion.div
                     key={link.id}
                     className={` rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50`}
                     whileTap={{ scale: 0.98 }}
-                    
                   >
-                    <Link target="_blank"
-                     href={link.link} className="flex gap-4 p-4 items-center w-full">
-                    <div className="w-14 h-12 rounded-lg bg-slate-700 flex items-center justify-center">
-                      
-                      <div className="w-10 h-10 bg-slate-600 rounded flex items-center justify-center">
-                        <Image
-                          src={link.img}
-                          alt="avatar"
-                          width={100}
-                          height={100}
-                        />
+                    <Link
+                      target="_blank"
+                      href={link.link}
+                      className="flex gap-4 p-4 items-center w-full"
+                    >
+                      <div className="w-14 h-12 rounded-lg bg-slate-700 flex items-center justify-center">
+                        <div className="w-10 h-10 bg-slate-600 rounded flex items-center justify-center">
+                          <Image
+                            src={link.img}
+                            alt="avatar"
+                            width={100}
+                            height={100}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex justify-between px-2 w-full">
-                      <span className="font-medium text-neutral-200">
-                        {link.title}
-                      </span>
-                      <span className="text-neutral-200 inline-flex text-right">
-                        <Image
-                          src={"/asset/arrowsh.gif"}
-                          alt="arrow"
-                          width={25}
-                          className=""
-                          height={15}
-                        />
-                      </span>
-                    </div>
+                      <div className="flex justify-between px-2 w-full">
+                        <span className="font-medium text-neutral-200">
+                          {link.title}
+                        </span>
+                        <span className="text-neutral-200 inline-flex text-right">
+                          <Image
+                            src={"/asset/arrowsh.gif"}
+                            alt="arrow"
+                            width={25}
+                            className=""
+                            height={15}
+                          />
+                        </span>
+                      </div>
                     </Link>
                   </motion.div>
-                 
                 ))}
               </div>
             </div>
@@ -133,11 +141,10 @@ const VideoKitPage = (data: card_data) => {
                 </div>
 
                 <div className="mt-auto">
-                    <div className="text-center text-zinc-300 text-xl font-semibold mb-10">Or Explore More</div>
-                  <Link
-                    href={"/dashboard"}
-                    className="block w-full"
-                  >
+                  <div className="text-center text-zinc-300 text-xl font-semibold mb-10">
+                    Or Explore More
+                  </div>
+                  <Link href={"/dashboard"} className="block w-full">
                     <motion.button
                       whileHover={{ scale: 1.03 }}
                       className="relative inline-flex h-15 text-lg  w-full  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"

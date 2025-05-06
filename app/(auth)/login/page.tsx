@@ -1,15 +1,8 @@
-import Login_page from '@/components/Login_page'
-import React from 'react'
-
+// app/login/page.tsx
+import { redirect } from "next/navigation";
 
 const Login = () => {
-  
+  redirect("/login/0");
+};
 
-  return (
-    <div>
-        <Login_page />
-    </div>
-  )
-}
-
-export default Login
+export default Login;

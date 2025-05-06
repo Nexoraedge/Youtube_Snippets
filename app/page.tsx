@@ -1,11 +1,11 @@
 "use client";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Mid from "@/components/Mid";
-import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const Page = () => {
   const { data: session, status } = useSession();
@@ -34,6 +34,7 @@ const Page = () => {
       <Hero />
       <Mid />
       <Footer />
+      
     </>
   );
 };
