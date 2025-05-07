@@ -5,8 +5,8 @@ import React from 'react'
 
 const Login_id = async({params}: {params: {id: string}}) => {
   
-  const pageid  =params;
-   const uid:number = parseInt(pageid.id);
+  const pageid  = await params;
+   const uid:number =await parseInt(pageid.id);
    let currentData=undefined;
    if (uid !== 0) {
     const currentDataArray = await getCurrentData(uid);
