@@ -11,29 +11,17 @@ const Footer = () => {
         ©Copyright 2025 DevDhoni-Ai
       </div>
       <div className="img flex gap-2">
-        <Link
-          href="https://www.instagram.com/reels/DBNa7LPtcgo/"
-          className="inline-block"
-        >
-          <FaInstagram size={24} color="#E1306C" />
-        </Link>
-        <Link
-          href={"https://www.facebook.com/profile.php?id=61571659255384"}
-          className="inline-block"
-        >
-          <FaFacebook size={24} color="#3B5998" />
-        </Link>
-        <Link href={"https://x.com/DhoniAi"} className="inline-block">
+        
+        <Link target="_blank" href={"https://x.com/DhoniAi"} className="inline-block">
           <FaXTwitter size={24} color="gray" />
         </Link>
-        <Link
+        {/* <Link
           href={"https://www.linkedin.com/in/nexora-edge/"}
           className="inline-block"
         >
           <FaLinkedin size={24} color="#0077B6" />
-        </Link>
-        <Link
-          href={"https://www.youtube.com/channel/UCLURA5d5DmvU_4q9pp9tyQg"}
+        </Link> */}
+        <Link target="_blank" href={"https://www.youtube.com/channel/UCLURA5d5DmvU_4q9pp9tyQg"}
           className="inline-block"
         >
           <FaYoutube size={24} color="#FF0000" />
