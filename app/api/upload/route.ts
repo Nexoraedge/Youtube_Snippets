@@ -36,14 +36,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Get the public URL for the uploaded file
-    const { data: urlData } = supabase.storage
+    // Create a signed URL (valid for 1 hour) so the file can be accessed even when the bucket is private
+    const { data: signedData, error: signedError } = await supabase.storage
       .from("projectimages")
-      .getPublicUrl(fileName);
+      .createSignedUrl(fileName, 60 * 60); // 1-hour expiry
+
+    if (signedError) {
+      console.error("Signed URL generation error:", signedError);
+      return NextResponse.json(
+        { error: "Failed to generate signed URL", details: signedError.message },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
-      fileUrl: urlData.publicUrl,
+      fileUrl: signedData.signedUrl,
       message: "File uploaded successfully",
     });
   } catch (error) {
