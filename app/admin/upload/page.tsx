@@ -143,6 +143,7 @@ const [formData, setFormData] = useState<CardData>({
       ? Math.max(...formData.links.map(link => link.id)) + 1
       : 1;
 
+
     setFormData({
       ...formData,
       links: [
@@ -374,7 +375,7 @@ const [formData, setFormData] = useState<CardData>({
                     ×
                   </button>
                 </div>
-              ))}
+             ))}
             </div>
           )}
         </div>
@@ -439,58 +440,78 @@ const [formData, setFormData] = useState<CardData>({
             </button>
           </div>
 
-          {formData.links.map((link) => (
-            <div key={link.id} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-600">
-              <div className="flex justify-between items-center mb-2">
-                <h4 className="text-sm font-medium">Link #{link.id}</h4>
-                <button
-                  type="button"
-                  onClick={() => removeLinkItem(link.id)}
-                  className="p-1 bg-red-100 text-red-600 rounded-full hover:bg-red-200"
-                >
-                  ×
-                </button>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-gray-500">Title</label>
-                  <input
-                    type="text"
-                    value={link.title}
-                    onChange={(e) => updateLinkItem(link.id, "title", e.target.value)}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  />
+          {formData.links.map((link) => {
+            const isSnippet = link.img.includes("snippet");
+            return (
+              <div
+                key={link.id}
+                className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-600"
+              >
+                <div className="flex justify-between items-center mb-2">
+                  <h4 className="text-sm font-medium">Link #{link.id}</h4>
+                  <button
+                    type="button"
+                    onClick={() => removeLinkItem(link.id)}
+                    className="p-1 bg-red-100 text-red-600 rounded-full hover:bg-red-200"
+                  >
+                    ×
+                  </button>
                 </div>
-                <div>
-                  <label className="block text-xs font-medium text-gray-500">URL</label>
-                  <input
-                    type="url"
-                    value={link.link}
-                    onChange={(e) => updateLinkItem(link.id, "link", e.target.value)}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-gray-500">Title</label>
+                    <input
+                      type="text"
+                      value={link.title}
+                      onChange={(e) => updateLinkItem(link.id, 'title', e.target.value)}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    {isSnippet ? (
+                      <>
+                        <label className="block text-xs font-medium text-gray-500">Snippet</label>
+                        <textarea
+                          rows={3}
+                          value={link.link}
+                          onChange={(e) => updateLinkItem(link.id, 'link', e.target.value)}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <label className="block text-xs font-medium text-gray-500">URL</label>
+                        <input
+                          type="url"
+                          value={link.link}
+                          onChange={(e) => updateLinkItem(link.id, 'link', e.target.value)}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        />
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-2">
+                  <label className="block text-xs font-medium text-gray-500">Icon</label>
+                  <select
+                    value={link.img}
+                    onChange={(e) => updateLinkItem(link.id, 'img', e.target.value)}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  />
+                  >
+                    <option value="/icons/link.png">Default Link</option>
+                    <option value="/icons/github.png">GitHub</option>
+                    <option value="/icons/snippet.png">Snippet</option>
+                    <option value="/icons/reddit.png">Reddit</option>
+                  </select>
                 </div>
               </div>
+            );
+          })}
+           
 
-              <div className="mt-2">
-                <label className="block text-xs font-medium text-gray-500">Icon</label>
-                <select
-                  value={link.img}
-                  onChange={(e) => updateLinkItem(link.id, "img", e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="/icons/link.png">Default Link</option>
-                  <option value="/icons/github.png">GitHub</option>
-                  <option value="/icons/snippet.png">Snippet</option>
-                  <option value="/icons/reddit.png">Reddit</option>
-                </select>
-              </div>
-            </div>
-          ))}
         </div>
-
-        {/* Submit Button */}
         <div>
           <button
             type="submit"

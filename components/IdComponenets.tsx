@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const VideoKitPage = (props: card_data) => {
+  const [copiedId, setCopiedId] = useState<number | null>(null);
   const router = useRouter();
   const { title, cover, links, ytvidlink, Share_link, id } = props;
   const { status } = useSession();
@@ -69,44 +70,89 @@ const VideoKitPage = (props: card_data) => {
                     </Link>
                   </div>
                 </div>
-                {links.map((link, index) => (
-                  <motion.div
-                    key={link.id}
-                    className={` rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50`}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Link
-                      target="_blank"
-                      href={link.link}
-                      className="flex gap-4 p-4 items-center w-full"
+                {links.map((link) => {
+                  const isSnippet = link.img.includes("snippet");
+                  return (
+                    <motion.div
+                      key={link.id}
+                      className="rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50"
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <div className="w-14 h-12 rounded-lg bg-slate-700 flex items-center justify-center">
-                        <div className="w-10 h-10 bg-slate-600 rounded flex items-center justify-center">
-                          <Image
-                            src={link.img}
-                            alt="avatar"
-                            width={100}
-                            height={100}
-                          />
-                        </div>
-                      </div>
-                      <div className="flex justify-between px-2 w-full">
-                        <span className="font-medium text-neutral-200">
-                          {link.title}
-                        </span>
-                        <span className="text-neutral-200 inline-flex text-right">
-                          <Image
-                            src={"/asset/arrowsh.gif"}
-                            alt="arrow"
-                            width={25}
-                            className=""
-                            height={15}
-                          />
-                        </span>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
+                      {isSnippet ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            navigator.clipboard.writeText(link.link);
+                            setCopiedId(link.id);
+                            setTimeout(() => setCopiedId(null), 1500);
+                          }}
+                          className="flex gap-4 p-4 items-center w-full text-left group"
+                        >
+                          <div className="w-14 h-12 rounded-lg bg-slate-700 flex items-center justify-center">
+                            <div className="w-10 h-10 bg-slate-600 rounded flex items-center justify-center">
+                              <Image
+                                src={link.img}
+                                alt="snippet icon"
+                                width={100}
+                                height={100}
+                              />
+                            </div>
+                          </div>
+                          <div className="flex justify-between px-2 w-full">
+                            <span className="font-medium text-neutral-200">
+                              {link.title}
+                            </span>
+                            <span className="relative text-neutral-200 inline-flex text-right">
+                              <Image
+                                src="/asset/copy.gif"
+                                alt="copy"
+                                title="copy"
+                                width={100}
+                                height={100}
+                                className="w-8 rounded-2xl cursor-pointer  "
+                              />
+                              <span
+                                className="absolute -top-7 right-0 bg-slate-800 text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                              >
+                                {copiedId === link.id ? "Copied!" : "Copy"}
+                              </span>
+                            </span>
+                          </div>
+                        </button>
+                      ) : (
+                        <Link
+                          target="_blank"
+                          href={link.link}
+                          className="flex gap-4 p-4 items-center w-full"
+                        >
+                          <div className="w-14 h-12 rounded-lg bg-slate-700 flex items-center justify-center">
+                            <div className="w-10 h-10 bg-slate-600 rounded flex items-center justify-center">
+                              <Image
+                                src={link.img}
+                                alt="avatar"
+                                width={100}
+                                height={100}
+                              />
+                            </div>
+                          </div>
+                          <div className="flex justify-between px-2 w-full">
+                            <span className="font-medium text-neutral-200">
+                              {link.title}
+                            </span>
+                            <span className="text-neutral-200 inline-flex text-right">
+                              <Image
+                                src="/asset/arrowsh.gif"
+                                alt="arrow"
+                                width={25}
+                                height={15}
+                              />
+                            </span>
+                          </div>
+                        </Link>
+                      )}
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
