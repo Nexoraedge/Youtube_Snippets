@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'platform-lookaside.fbsbx.com', 
       },
+      {
+        protocol: 'https',
+        hostname: 'xafyqdmsvmpkdzjfnmzl.supabase.co',
+      },
       { protocol: 'https', hostname: 'pbs.twimg.com' },
       
     ],
