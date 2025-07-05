@@ -19,7 +19,7 @@ interface CardData {
     title: string;
   }[];
   ytvidlink: string;
-  Share_link: string;
+  share_link: string;
 }
 
 export default function UploadPage() {
@@ -29,30 +29,56 @@ export default function UploadPage() {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [techStackInput, setTechStackInput] = useState("");
   const [message, setMessage] = useState({ type: "", content: "" });
+  const [id, setId] = useState(1);
 
-  const [formData, setFormData] = useState<Omit<CardData, "id">>({
-    title: "",
-    img: "",
-    techstack: [],
-    description: "",
-    link: "",
-    cover: "",
-    links: [
-      {
-        id: 1,
-        img: "/icons/link.png",
-        link: "",
-        title: "Link",
-      },
-    ],
-    ytvidlink: "",
-    Share_link: "",
-  });
 
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+// Update your handleTextChange function
+
+const handleTextChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target;
+  
+  let updatedFormData = { ...formData, [name]: value };
+  
+  // If updating the link field, extract ID from it
+  if (name === "link" && value.includes("localhost:3000/")) {
+    const extractedId = value.replace("http://localhost:3000/", "").replace("https://localhost:3000/", "");
+    const numericId = parseInt(extractedId);
+    
+    if (!isNaN(numericId)) {
+      updatedFormData.id = numericId;
+      setId(numericId);
+    }
+  }
+  
+  setFormData(updatedFormData);
+  console.log("Updated form data:", updatedFormData);
+};
+
+// Alternative: Use auto-generated IDs instead of extracting from link
+const generateUniqueId = () => {
+  return Date.now(); // Simple timestamp-based ID
+};
+
+// Initialize form with proper ID
+const [formData, setFormData] = useState<CardData>({
+  id: generateUniqueId(),
+  title: "",
+  img: "",
+  techstack: [],
+  description: "",
+  link: "",
+  cover: "",
+  links: [
+    {
+      id: 1,
+      img: "/icons/link.png",
+      link: "",
+      title: "Link",
+    },
+  ],
+  ytvidlink: "",
+  share_link: "",
+});
 
   const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>, fieldName: "img" | "cover") => {
     const file = e.target.files?.[0];
@@ -113,10 +139,10 @@ export default function UploadPage() {
   };
 
   const addLinkItem = () => {
-    const newId = formData.links.length > 0 
-      ? Math.max(...formData.links.map(link => link.id)) + 1 
+    const newId = formData.links.length > 0
+      ? Math.max(...formData.links.map(link => link.id)) + 1
       : 1;
-    
+
     setFormData({
       ...formData,
       links: [
@@ -136,45 +162,60 @@ export default function UploadPage() {
       setMessage({ type: "warning", content: "You need at least one link" });
       return;
     }
-    
+
     const updatedLinks = formData.links.filter(link => link.id !== id);
     setFormData({ ...formData, links: updatedLinks });
   };
 
   const updateLinkItem = (id: number, field: string, value: string) => {
-    const updatedLinks = formData.links.map(link => 
+    const updatedLinks = formData.links.map(link =>
       link.id === id ? { ...link, [field]: value } : link
     );
     
+
     setFormData({ ...formData, links: updatedLinks });
   };
 
   const handleSubmit = async (e: FormEvent) => {
+    console.log("Form data before submit:", formData);
     e.preventDefault();
-    
+    console.log("Form data being sent:", formData);
+  
     if (!formData.img || !formData.title || !formData.description) {
       setMessage({ type: "error", content: "Please fill all required fields" });
       return;
     }
-
+  
     try {
+      // Ensure ID is properly set before sending
+      const dataToSend = {
+        ...formData,
+        id: formData.id || Date.now(), // Use timestamp as fallback if ID is not set
+      };
+  
+      console.log("Data being sent to API:", dataToSend);
+  
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
-
+  
       if (!response.ok) {
-        throw new Error("Failed to submit data");
+        const errorData = await response.json();
+        console.error("API Error:", errorData);
+        throw new Error(errorData.error || "Failed to submit data");
       }
-
+  
       const result = await response.json();
       setMessage({ type: "success", content: "Project added successfully!" });
-      
+  
       // Reset form after successful submission
+      const newId = Date.now(); // Generate new ID for next project
       setFormData({
+        id: newId,
         title: "",
         img: "",
         techstack: [],
@@ -190,29 +231,27 @@ export default function UploadPage() {
           },
         ],
         ytvidlink: "",
-        Share_link: "",
+        share_link: "",
       });
+      setId(newId);
       setPreviewImage(null);
       setCoverPreview(null);
-      
-      // Optionally redirect to dashboard or projects list
-      // router.push('/admin/projects');
     } catch (error) {
       console.error("Submission error:", error);
       setMessage({ type: "error", content: "Failed to save project data" });
     }
   };
+  
 
   return (
     <div className="p-6 max-w-4xl mx-auto bg-neutral-600 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-6">Upload New Project</h1>
-      
+
       {message.content && (
-        <div className={`p-4 mb-4 rounded ${
-          message.type === "error" ? "bg-red-200 text-red-700" : 
-          message.type === "success" ? "bg-green-200 text-green-700" :
-          "bg-yellow-100 text-yellow-700"
-        }`}>
+        <div className={`p-4 mb-4 rounded ${message.type === "error" ? "bg-red-200 text-red-700" :
+            message.type === "success" ? "bg-green-200 text-green-700" :
+              "bg-yellow-100 text-yellow-700"
+          }`}>
           {message.content}
         </div>
       )}
@@ -247,11 +286,11 @@ export default function UploadPage() {
             />
             {previewImage && (
               <div className="relative h-16 w-16">
-                <Image 
-                  src={previewImage} 
-                  alt="Preview" 
-                  fill 
-                  className="object-cover rounded" 
+                <Image
+                  src={previewImage}
+                  alt="Preview"
+                  fill
+                  className="object-cover rounded"
                 />
               </div>
             )}
@@ -272,11 +311,11 @@ export default function UploadPage() {
             />
             {coverPreview && (
               <div className="relative h-16 w-16">
-                <Image 
-                  src={coverPreview} 
-                  alt="Cover Preview" 
-                  fill 
-                  className="object-cover rounded" 
+                <Image
+                  src={coverPreview}
+                  alt="Cover Preview"
+                  fill
+                  className="object-cover rounded"
                 />
               </div>
             )}
@@ -373,12 +412,12 @@ export default function UploadPage() {
         {/* Share Link */}
         <div>
           <label className="block text-sm font-medium text-gray-300">
-            Share Link
+            share Link
           </label>
           <input
             type="url"
-            name="Share_link"
-            value={formData.Share_link}
+            name="share_link"
+            value={formData.share_link}
             onChange={handleTextChange}
             placeholder="https://..."
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
@@ -412,7 +451,7 @@ export default function UploadPage() {
                   ×
                 </button>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-500">Title</label>
@@ -433,7 +472,7 @@ export default function UploadPage() {
                   />
                 </div>
               </div>
-              
+
               <div className="mt-2">
                 <label className="block text-xs font-medium text-gray-500">Icon</label>
                 <select
@@ -456,9 +495,8 @@ export default function UploadPage() {
           <button
             type="submit"
             disabled={uploading}
-            className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-              uploading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${uploading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {uploading ? "Uploading..." : "Submit Project"}
           </button>
