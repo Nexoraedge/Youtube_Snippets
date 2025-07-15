@@ -1,6 +1,6 @@
 "use client";
-import supabase from "@/lib/supabase";
-import { useState, ChangeEvent,useEffect , FormEvent } from "react";
+
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -30,37 +30,9 @@ export default function UploadPage() {
   const [techStackInput, setTechStackInput] = useState("");
   const [message, setMessage] = useState({ type: "", content: "" });
   const [id, setId] = useState(1);
-  const [user, setUser] = useState<any>(null)
-const [canUpload, setCanUpload] = useState(false)
-const [loading, setLoading] = useState(true)
-
 
 
 // Update your handleTextChange function
-useEffect(() => {
-  checkUserPermissions()
-}, [])
-
-const checkUserPermissions = async () => {
-  try {
-    setLoading(true)
-    const { data: { user } } = await supabase.auth.getUser()
-    console.log(user);
-    if (user) {
-      setUser(user)
-      // Check if user ID is 22 or 23
-      const allowedUserEmail = ['onlyego1043@gmail.com','hardikjain2030@gmail.com']
-      setCanUpload(allowedUserEmail.includes(user.email || ''))
-    } else {
-      setCanUpload(false)
-    }
-  } catch (error) {
-    console.error('Error checking user permissions:', error)
-    setCanUpload(false)
-  } finally {
-    setLoading(false)
-  }
-}
 
 const handleTextChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
   const { name, value } = e.target;
@@ -209,11 +181,7 @@ const [formData, setFormData] = useState<CardData>({
     //console.log("Form data before submit:", formData);
     e.preventDefault();
     //console.log("Form data being sent:", formData);
-    if (!canUpload) {
-      setMessage({ type: "error", content: "You don't have permission to upload projects" });
-      return;
-    }
-
+  
     if (!formData.img || !formData.title || !formData.description) {
       setMessage({ type: "error", content: "Please fill all required fields" });
       return;
@@ -221,15 +189,9 @@ const [formData, setFormData] = useState<CardData>({
   
     try {
       // Ensure ID is properly set before sending
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user || !['onlyego1043@gmail.com','hardikjain2030@gmail.com'].includes(user.email || '')) {
-        setMessage({ type: "error", content: "Unauthorized access" });
-        return;
-      }
-
       const dataToSend = {
         ...formData,
-        id: formData.id || Date.now() // Use timestamp as fallback if ID is not set
+        id: formData.id || Date.now(), // Use timestamp as fallback if ID is not set
       };
   
       //console.log("Data being sent to API:", dataToSend);
@@ -281,49 +243,6 @@ const [formData, setFormData] = useState<CardData>({
     }
   };
   
-if (loading) {
-  return (
-    <div className="p-6 max-w-4xl mx-auto bg-neutral-600 rounded-lg shadow-md">
-      <div className="flex items-center justify-center py-12">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
-        <span className="ml-2 text-gray-300">Checking permissions...</span>
-      </div>
-    </div>
-  )
-}
-
-// if (!user) {
-//   return (
-//     <div className="p-6 max-w-4xl mx-auto bg-neutral-600 rounded-lg shadow-md">
-//       <div className="text-center py-12">
-//         <div className="text-6xl mb-4">🔒</div>
-//         <h2 className="text-2xl font-bold text-white mb-4">Authentication Required</h2>
-//         <p className="text-gray-300 mb-6">Please log in to access this feature</p>
-//         <button 
-//           onClick={() => router.push('/login')}
-//           className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-//         >
-//           Go to Login
-//         </button>
-//       </div>
-//     </div>
-//   )
-// }
-
-if (!canUpload) {
-  return (
-    <div className="p-6 max-w-4xl mx-auto bg-neutral-600 rounded-lg shadow-md">
-      <div className="text-center py-12">
-        <div className="text-6xl mb-4">⛔</div>
-        <h2 className="text-2xl font-bold text-white mb-4">Access Denied</h2>
-        <p className="text-gray-300 mb-2">You don't have permission to upload projects</p>
-        <p className="text-gray-400 text-sm">User ID: {user.email}</p>
-        <p className="text-gray-400 text-sm">Only specific users can upload projects</p>
-      </div>
-    </div>
-  )
-}
-  
 
   return (
     <div className="p-6 max-w-4xl mx-auto bg-neutral-600 rounded-lg shadow-md">
@@ -337,7 +256,7 @@ if (!canUpload) {
           {message.content}
         </div>
       )}
-      
+
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Title */}
         <div>
