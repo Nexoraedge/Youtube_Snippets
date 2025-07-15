@@ -3,6 +3,7 @@ import supabase from "@/lib/supabase";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+    const { data: { user } } = await supabase.auth.getUser()
     const { 
       id, 
       img, 
@@ -15,6 +16,11 @@ export async function POST(req: Request) {
       ytvidlink, 
       share_link 
     } = body as any;
+
+    if (!user || !['22', '23'].includes(user.id)) {
+      console.error("Unauthorized access");
+      return Response.json({ error: 'Unauthorized' }, { status: 403 })
+    }
 
     //console.log("Received data:", body);
 
