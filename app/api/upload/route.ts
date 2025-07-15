@@ -62,6 +62,9 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+export async function POST_Error(req:Request) {
+  
+}
 
 // Set the maximum file size to 10MB
 export const config = {

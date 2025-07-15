@@ -12,7 +12,7 @@ const VideoKitPage = (props: card_data) => {
   const router = useRouter();
   const { title, cover, links, ytvidlink, Share_link, id } = props;
   const { status } = useSession();
-  console.log(id);
+  //console.log(id);
   useEffect(() => {
     if (status !== "loading" && status === "unauthenticated") {
       router.push(`/login/${id}/`);

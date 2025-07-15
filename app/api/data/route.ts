@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       share_link 
     } = body as any;
 
-    console.log("Received data:", body);
+    //console.log("Received data:", body);
 
     // Basic validation
     if (!img || !title || !description) {
@@ -56,7 +56,7 @@ export async function POST(req: Request) {
       Share_link : share_link 
     };
 
-    console.log("Data being inserted:", insertData);
+    //console.log("Data being inserted:", insertData);
 
     const { data: projectData, error: insertError } = await supabase
       .from("projects")
@@ -71,7 +71,7 @@ export async function POST(req: Request) {
       }, { status: 500 });
     }
     
-    console.log("Successfully inserted:", projectData);
+    //console.log("Successfully inserted:", projectData);
     
     return Response.json({
       success: true,

@@ -51,7 +51,7 @@ const handleTextChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   }
   
   setFormData(updatedFormData);
-  console.log("Updated form data:", updatedFormData);
+  //console.log("Updated form data:", updatedFormData);
 };
 
 // Alternative: Use auto-generated IDs instead of extracting from link
@@ -178,9 +178,9 @@ const [formData, setFormData] = useState<CardData>({
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    console.log("Form data before submit:", formData);
+    //console.log("Form data before submit:", formData);
     e.preventDefault();
-    console.log("Form data being sent:", formData);
+    //console.log("Form data being sent:", formData);
   
     if (!formData.img || !formData.title || !formData.description) {
       setMessage({ type: "error", content: "Please fill all required fields" });
@@ -194,7 +194,7 @@ const [formData, setFormData] = useState<CardData>({
         id: formData.id || Date.now(), // Use timestamp as fallback if ID is not set
       };
   
-      console.log("Data being sent to API:", dataToSend);
+      //console.log("Data being sent to API:", dataToSend);
   
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data`, {
         method: "POST",

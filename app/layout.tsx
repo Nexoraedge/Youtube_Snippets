@@ -5,6 +5,7 @@ import "./globals.css";
 import { Providers } from "./Providers";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Report_bug from "@/components/Report_bug";
 // import { SessionProvider } from "next-auth/react";
 
 const geistSans = Roboto_Slab({
@@ -34,6 +35,7 @@ export default async function RootLayout({
        <Providers>
        
           {children}
+          <Report_bug/>
     
        </Providers>
        
