@@ -1,5 +1,5 @@
 "use client";
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import supabase from "@/lib/supabase";
 import { useState, ChangeEvent,useEffect , FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -33,7 +33,7 @@ export default function UploadPage() {
   const [user, setUser] = useState<any>(null)
 const [canUpload, setCanUpload] = useState(false)
 const [loading, setLoading] = useState(true)
-const supabase = createClientComponentClient()
+
 
 
 // Update your handleTextChange function
@@ -45,12 +45,12 @@ const checkUserPermissions = async () => {
   try {
     setLoading(true)
     const { data: { user } } = await supabase.auth.getUser()
-    
+    console.log(user);
     if (user) {
       setUser(user)
       // Check if user ID is 22 or 23
-      const allowedUserIds = ['22', '23']
-      setCanUpload(allowedUserIds.includes(user.id))
+      const allowedUserEmail = ['onlyego1043@gmail.com','hardikjain2030@gmail.com']
+      setCanUpload(allowedUserEmail.includes(user.email || ''))
     } else {
       setCanUpload(false)
     }
@@ -229,8 +229,7 @@ const [formData, setFormData] = useState<CardData>({
 
       const dataToSend = {
         ...formData,
-        id: formData.id || Date.now(),
-        uploaded_by: user.id, // Use timestamp as fallback if ID is not set
+        id: formData.id || Date.now() // Use timestamp as fallback if ID is not set
       };
   
       //console.log("Data being sent to API:", dataToSend);
@@ -318,7 +317,7 @@ if (!canUpload) {
         <div className="text-6xl mb-4">⛔</div>
         <h2 className="text-2xl font-bold text-white mb-4">Access Denied</h2>
         <p className="text-gray-300 mb-2">You don't have permission to upload projects</p>
-        <p className="text-gray-400 text-sm">User ID: {user.id}</p>
+        <p className="text-gray-400 text-sm">User ID: {user.email}</p>
         <p className="text-gray-400 text-sm">Only specific users can upload projects</p>
       </div>
     </div>
