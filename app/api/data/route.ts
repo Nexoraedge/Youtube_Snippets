@@ -3,7 +3,6 @@ import supabase from "@/lib/supabase";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { data: { user } } = await supabase.auth.getUser()
     const { 
       id, 
       img, 
@@ -17,12 +16,7 @@ export async function POST(req: Request) {
       share_link 
     } = body as any;
 
-    if (!user || !['onlyego1043@gmail.com','hardikjain2030@gmail.com'].includes(user.email || '')) {
-      console.error("Unauthorized access");
-      return Response.json({ error: 'Unauthorized' }, { status: 403 })
-    }
-
-    //console.log("Received data:", body);
+    console.log("Received data:", body);
 
     // Basic validation
     if (!img || !title || !description) {
@@ -62,7 +56,7 @@ export async function POST(req: Request) {
       Share_link : share_link 
     };
 
-    //console.log("Data being inserted:", insertData);
+    console.log("Data being inserted:", insertData);
 
     const { data: projectData, error: insertError } = await supabase
       .from("projects")
@@ -77,7 +71,7 @@ export async function POST(req: Request) {
       }, { status: 500 });
     }
     
-    //console.log("Successfully inserted:", projectData);
+    console.log("Successfully inserted:", projectData);
     
     return Response.json({
       success: true,
