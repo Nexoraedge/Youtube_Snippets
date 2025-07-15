@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-
 const Card_Content = ({data}: {data: card_data}) => {
   const { title, description, techstack, link, img , id } = data;  
    
@@ -13,92 +12,125 @@ const Card_Content = ({data}: {data: card_data}) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       whileHover={{ 
-        scale: 1.03, 
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4)" 
+        boxShadow: "0 25px 50px -12px rgba(139, 92, 246, 0.4), 0 20px 25px -5px rgba(168, 85, 247, 0.3)" 
       }}
-      whileTap={{ scale: 0.98 }}
       transition={{ 
         type: "spring", 
         stiffness: 400, 
         damping: 17 
       }}
-      
-      
-      className="w-full flex flex-col relative bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 backdrop-blur-sm rounded-2xl p-6 sm:p-5   h-auto min-h-[440px] md:h-[450px] shadow-lg shadow-purple-900/30 border border-purple-800/30"
+      className="flex-shrink-0 w-[340px] sm:w-[400px] flex flex-col relative bg-gradient-to-br from-slate-800/90 via-purple-900/50 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 max-sm:px-4  h-[520px] shadow-2xl shadow-purple-900/40 border border-purple-500/30 hover:border-purple-400/50 group overflow-hidden"
     >
       
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-600/5 to-blue-600/10 rounded-3xl"></div>
       
+      {/* Animated background particles */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-10 left-10 w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+        <div className="absolute top-20 right-16 w-1 h-1 bg-pink-400 rounded-full animate-ping"></div>
+        <div className="absolute bottom-20 left-16 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+      </div>
       
+      {/* Image section */}
       <motion.div 
-        initial={{ y: 0 }}
-        whileHover={{ y: -5 }}
-        className="img relative -top-10 sm:-top-12"
+        initial={{ y: 0, scale: 1 }}
+        whileHover={{ y: -8, scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="relative z-10 mb-6"
       >
-        <div className="bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-lg p-2 shadow-lg inline-block">
+        <div className="relative bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl p-4 shadow-xl border border-purple-500/30 backdrop-blur-sm">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-2xl blur-sm"></div>
           <Image 
             src={img} 
             alt={title} 
-            width={100} 
-            height={100} 
-            className="rounded-md object-contain hover:rotate-3 transition-all duration-300" 
+            width={120} 
+            height={120} 
+            className="relative z-10 rounded-xl object-contain hover:rotate-6 transition-all duration-500 shadow-lg" 
           />
         </div>
       </motion.div>
       
-      
+      {/* Content section */}
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="flex relative -top-6 flex-col gap-4"
+        className="flex flex-col gap-4 flex-grow relative z-10"
       >
-        <h2 className="title font-bold tracking-wider text-xl sm:text-2xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">{title}</h2>
-        <p className="description font-medium text-gray-300/90 overflow-hidden line-clamp-5 sm:line-clamp-6">{description}</p>
+        <h2 className="title font-bold tracking-wide text-2xl leading-tight bg-gradient-to-r from-purple-300 via-pink-400 to-purple-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:via-pink-300 group-hover:to-purple-200 transition-all duration-300">
+          {title}
+        </h2>
+        
+        <div className="flex-grow">
+          <p className="description font-medium text-gray-300/90 leading-relaxed text-sm line-clamp-6 group-hover:text-gray-200/95 transition-colors duration-300">
+            {description}
+          </p>
+        </div>
       </motion.div>
       
       {/* Footer with tech stack and link */}
-      <div className="footer mt-auto pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div className="footer pt-6 flex justify-between gap-4 relative z-10">
+        
+        {/* Tech stack */}
         <motion.div 
           whileHover={{ scale: 1.05 }}
-          className="techstack p-1.5 flex -space-x-2.5 relative rounded-full bg-gradient-to-r from-purple-800 to-purple-900 shadow-inner shadow-purple-950 border border-purple-700/50"
+          className="techstack flex justify-center"
         >
-          {techstack.map((tech, index:number) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.2, zIndex: 10 }}
-              className="relative z-0 hover:z-10"
-            >
-              <Image 
-                src={tech} 
-                alt="tech stack" 
-                width={25} 
-                height={20} 
-                className="rounded-full object-contain bg-gray-900/50 p-0.5" 
-              />
-            </motion.div>
-          ))}
+          <div className="flex -space-x-3 p-3 rounded-2xl bg-gradient-to-r from-purple-800/40 to-purple-900/40 shadow-inner shadow-purple-950/50 border border-purple-600/40 backdrop-blur-sm">
+            {techstack.map((tech, index:number) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.3, zIndex: 10, y: -4 }}
+                transition={{ type: "spring", stiffness: 400 }}
+                className="relative z-0 hover:z-10"
+              >
+                <div className="w-8 h-8 rounded-full bg-slate-800/80 border border-purple-500/30 flex items-center justify-center shadow-lg hover:shadow-purple-500/50 transition-all duration-300">
+                  <Image 
+                    src={tech} 
+                    alt="tech stack" 
+                    width={20} 
+                    height={20} 
+                    className="rounded-full object-contain" 
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
         
+        {/* Link button */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          className="flex  justify-center"
         >
           <Link 
             href={`${process.env.NEXT_PUBLIC_URL}/${id}/`} 
-             
-            className="link px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-medium rounded-full flex items-center gap-1 transition-all duration-300 shadow-md shadow-purple-900/50 hover:shadow-lg hover:shadow-purple-800/50"
+            className="link px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-800/60 border border-purple-500/30 hover:border-purple-400/50 group/btn"
           >
             <span>View Project</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform transition-transform group-hover:translate-x-1">
+            <motion.svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="18" 
+              height="18" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className="transition-transform duration-300 group-hover/btn:translate-x-1"
+            >
               <path d="M5 12h14"></path>
               <path d="m12 5 7 7-7 7"></path>
-            </svg>
+            </motion.svg>
           </Link>
         </motion.div>
       </div>
       
-     
-      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-purple-950/50 to-transparent pointer-events-none"></div>
+      {/* Bottom gradient overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none rounded-b-3xl"></div>
     </motion.div>
   );
 };
