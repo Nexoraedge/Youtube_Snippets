@@ -160,7 +160,7 @@ const Page = () => {
           <motion.div
             whileHover={{ scale: 1.005 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="flex flex-col w-full bg-gradient-to-br from-slate-800/60 via-purple-900/20 to-slate-800/60 backdrop-blur-xl border border-purple-500/40 rounded-3xl p-8 shadow-2xl shadow-purple-500/20 relative overflow-hidden"
+            className="flex flex-col w-full lg:w-[60vw] bg-gradient-to-br from-slate-800/60 via-purple-900/20 to-slate-800/60 backdrop-blur-xl border border-purple-500/40 rounded-3xl p-8 shadow-2xl shadow-purple-500/20 relative overflow-hidden"
           >
             
             {/* Background Effects */}

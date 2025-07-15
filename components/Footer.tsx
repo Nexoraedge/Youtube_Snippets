@@ -15,12 +15,12 @@ const Footer = () => {
         <Link target="_blank" href={"https://x.com/DhoniAi"} className="inline-block">
           <FaXTwitter size={24} color="gray" />
         </Link>
-        {/* <Link
-          href={"https://www.linkedin.com/in/nexora-edge/"}
+        <Link
+          href={"https://www.linkedin.com/in/devdhoni-ai/"}
           className="inline-block"
         >
           <FaLinkedin size={24} color="#0077B6" />
-        </Link> */}
+        </Link>
         <Link target="_blank" href={"https://www.youtube.com/channel/UCLURA5d5DmvU_4q9pp9tyQg"}
           className="inline-block"
         >

@@ -40,9 +40,9 @@ const VideoKitPage = (props: card_data) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-700/50 p-6 h-full">
-              <div className="space-y-4  overflow-y-auto pr-2 custom-scrollbar">
-                <div className="p-4 rounded-xl cursor-pointer transition-all duration-300 flex items-center gap-4">
+            <div className="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-700/50 p-4 sm:p-6 h-full">
+              <div className="space-y-4  overflow-y-auto ">
+                <div className="p-4 rounded-xl cursor-pointer transition-all duration-300 flex max-md:flex-col items-center gap-4">
                   <Image
                     src={cover}
                     alt="avatar"
@@ -51,13 +51,13 @@ const VideoKitPage = (props: card_data) => {
                     className="rounded-lg "
                   />
                   <div className="title w-full flex flex-col gap-3 ">
-                    <h2 className="text-2xl md:text-3xl bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 bg-clip-text text-transparent font-semibold">
+                    <h2 className="text-2xl max-md:text-center md:text-3xl bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 bg-clip-text text-transparent font-semibold">
                       {title}
                     </h2>
                     <Link
                       target="_blank"
                       href={Share_link}
-                      className="text-zinc-300 flex gap-3 text-sm pl-5"
+                      className="text-zinc-300 max-md:justify-center flex gap-3 text-sm md:pl-5"
                     >
                       click here{" "}
                       <Image
