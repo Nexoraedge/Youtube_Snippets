@@ -222,7 +222,7 @@ const [formData, setFormData] = useState<CardData>({
     try {
       // Ensure ID is properly set before sending
       const { data: { user } } = await supabase.auth.getUser()
-      if (!user || !['22', '23'].includes(user.id)) {
+      if (!user || !['onlyego1043@gmail.com','hardikjain2030@gmail.com'].includes(user.email || '')) {
         setMessage({ type: "error", content: "Unauthorized access" });
         return;
       }
@@ -293,23 +293,23 @@ if (loading) {
   )
 }
 
-if (!user) {
-  return (
-    <div className="p-6 max-w-4xl mx-auto bg-neutral-600 rounded-lg shadow-md">
-      <div className="text-center py-12">
-        <div className="text-6xl mb-4">🔒</div>
-        <h2 className="text-2xl font-bold text-white mb-4">Authentication Required</h2>
-        <p className="text-gray-300 mb-6">Please log in to access this feature</p>
-        <button 
-          onClick={() => router.push('/login')}
-          className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-        >
-          Go to Login
-        </button>
-      </div>
-    </div>
-  )
-}
+// if (!user) {
+//   return (
+//     <div className="p-6 max-w-4xl mx-auto bg-neutral-600 rounded-lg shadow-md">
+//       <div className="text-center py-12">
+//         <div className="text-6xl mb-4">🔒</div>
+//         <h2 className="text-2xl font-bold text-white mb-4">Authentication Required</h2>
+//         <p className="text-gray-300 mb-6">Please log in to access this feature</p>
+//         <button 
+//           onClick={() => router.push('/login')}
+//           className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+//         >
+//           Go to Login
+//         </button>
+//       </div>
+//     </div>
+//   )
+// }
 
 if (!canUpload) {
   return (

@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       share_link 
     } = body as any;
 
-    if (!user || !['22', '23'].includes(user.id)) {
+    if (!user || !['onlyego1043@gmail.com','hardikjain2030@gmail.com'].includes(user.email || '')) {
       console.error("Unauthorized access");
       return Response.json({ error: 'Unauthorized' }, { status: 403 })
     }
