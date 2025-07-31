@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       
       } = body as any;
   
-      //console.log("Received data:", body);
+      ////console.log("Received data:", body);
   
       // Basic validation
       if (!name || !email || !issue) {
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
         
       };
   
-      //console.log("Data being inserted:", insertData);
+      ////console.log("Data being inserted:", insertData);
   
       const { data: projectData, error: insertError } = await supabase
         .from("bug_reports")

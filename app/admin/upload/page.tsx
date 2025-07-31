@@ -206,7 +206,7 @@ const [formData, setFormData] = useState<CardData>({
   
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("API Error:", errorData);
+        // console.error("API Error:", errorData);
         throw new Error(errorData.error || "Failed to submit data");
       }
   
@@ -238,7 +238,7 @@ const [formData, setFormData] = useState<CardData>({
       setPreviewImage(null);
       setCoverPreview(null);
     } catch (error) {
-      console.error("Submission error:", error);
+      // console.error("Submission error:", error);
       setMessage({ type: "error", content: "Failed to save project data" });
     }
   };
