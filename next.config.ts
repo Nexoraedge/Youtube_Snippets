@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'xafyqdmsvmpkdzjfnmzl.supabase.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'nxxzyuhqvwwjwokxiyzo.supabase.co',
+      },
       { protocol: 'https', hostname: 'pbs.twimg.com' },
       
     ],
