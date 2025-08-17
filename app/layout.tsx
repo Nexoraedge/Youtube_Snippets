@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import { Roboto_Slab} from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import { Analytics } from "@vercel/analytics/next"
 import Report_bug from "@/components/Report_bug";
 // import { SessionProvider } from "next-auth/react";
 
@@ -36,7 +35,7 @@ export default async function RootLayout({
        
           {children}
           <Report_bug/>
-    
+          <Analytics />    
        </Providers>
        
       </body>
