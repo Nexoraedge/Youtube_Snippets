@@ -19,5 +19,5 @@ interface card_data {
     title: string;
   }[];
   ytvidlink: string;
-  Share_link: string;
+  share_link: string;
 }

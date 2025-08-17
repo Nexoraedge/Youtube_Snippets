@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 const VideoKitPage = (props: card_data) => {
   const [copiedId, setCopiedId] = useState<number | null>(null);
   const router = useRouter();
-  const { title, cover, links, ytvidlink, Share_link, id } = props;
+  const { title, cover, links, ytvidlink, share_link, id } = props;
   const { status } = useSession();
   //console.log(id);
   useEffect(() => {
@@ -56,7 +56,7 @@ const VideoKitPage = (props: card_data) => {
                     </h2>
                     <Link
                       target="_blank"
-                      href={Share_link}
+                      href={share_link || "#"}
                       className="text-zinc-300 max-md:justify-center flex gap-3 text-sm md:pl-5"
                     >
                       click here{" "}
@@ -122,7 +122,7 @@ const VideoKitPage = (props: card_data) => {
                       ) : (
                         <Link
                           target="_blank"
-                          href={link.link}
+                          href={link.link || "#"}
                           className="flex gap-4 p-4 items-center w-full"
                         >
                           <div className="w-14 h-12 rounded-lg bg-slate-700 flex items-center justify-center">

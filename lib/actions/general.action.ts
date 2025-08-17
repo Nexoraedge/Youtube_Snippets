@@ -1,8 +1,20 @@
 export const dynamic = "force-dynamic";
 import { User } from "@/types/database";
 
+// Resolve a base URL for server-side fetches
+function getBaseUrl() {
+  // Prefer explicit public URL, then NEXTAUTH_URL, then VERCEL_URL, then localhost
+  const explicit = process.env.NEXT_PUBLIC_URL || process.env.NEXTAUTH_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+  const vercel = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
+  if (vercel) return vercel.replace(/\/$/, "");
+  return "http://localhost:3000";
+}
+
+const BASE_URL = getBaseUrl();
+
 export async function getUsers(): Promise<User[] | []> {
-    const res = await fetch(`/api/users`, {
+    const res = await fetch(`${BASE_URL}/api/users`, {
         method: 'GET',
         cache: 'no-store',
         next: { revalidate: 0 },
@@ -16,7 +28,7 @@ export async function getUsers(): Promise<User[] | []> {
     return data.users as User[];
 }
 export async function getCardData() {
-    const res = await fetch(`/api/data`, {
+    const res = await fetch(`${BASE_URL}/api/data`, {
         method: 'GET',
         cache: 'no-store',
         next: { revalidate: 0 },
@@ -30,7 +42,7 @@ export async function getCardData() {
     return data.projects;
 }
 export async function getCurrentData(uid:number) {
-    const res = await fetch(`/api/data/`, {
+    const res = await fetch(`${BASE_URL}/api/data`, {
         method: 'GET',
         cache: 'no-store',
         next: { revalidate: 0 },

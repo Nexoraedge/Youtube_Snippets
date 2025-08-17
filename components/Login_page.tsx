@@ -27,7 +27,7 @@ const Login_page = ({
     return <Loginpage />;
   }
 
-  const { title, description, techstack, img, cover, Share_link } = currentData;
+  const { title, description, techstack, img, cover, share_link } = currentData;
 
   return (
     <>
@@ -41,7 +41,7 @@ const Login_page = ({
       ></div>
       <div className="flex gap-7 md:flex-row flex-col justify-center items-center min-h-screen max-md:justify-center container mx-auto px-10 max-md:px-5 max-md:py-10">
         <div className=" backdrop-blur-sm border-[1px] w-1/2 max-md:w-full  flex flex-col  px-10 py-7  rounded-2xl items-center justify-center overflow-y-auto  md:h-[70vh]  ">
-          <Link href={Share_link}>
+          <Link href={share_link || '#'}>
             {" "}
             <Image
               src={cover}
