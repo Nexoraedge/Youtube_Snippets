@@ -53,7 +53,7 @@ export async function POST(req: Request) {
       cover,
       links: linksPrepared,
       ytvidlink,
-      Share_link : share_link 
+      share_link: share_link // Changed from 'Share_link' to 'share_link'
     };
 
     //console.log("Data being inserted:", insertData);
