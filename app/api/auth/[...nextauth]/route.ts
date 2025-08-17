@@ -4,7 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import TwitterProvider from "next-auth/providers/twitter";
 import CredentialsProvider from "next-auth/providers/credentials";
-import supabase from "@/lib/supabase";
+import supabaseServer from "@/lib/supabaseServer";
 
 const handler = NextAuth({
   providers: [
@@ -96,24 +96,24 @@ const handler = NextAuth({
       if (!email) return false;
 
       // Check if user already exists in Supabase by email
-      const { data: existingUser, error: fetchError } = await supabase
-        .from("Users")
-        .select("*")
-        .eq("email", email)
-        .single();
-
-      if (!existingUser) {
-        // User not in DB, insert new
-        const { error: insertError } = await supabase
+      try {
+        const { data: existingUser } = await supabaseServer
           .from("Users")
-          .insert([{ email, username: user.name || email.split("@")[0] }]);
+          .select("*")
+          .eq("email", email)
+          .single();
 
-        if (insertError) {
-          return false;
+        if (!existingUser) {
+          await supabaseServer
+            .from("Users")
+            .insert([{ email, username: user.name || email.split("@")[0] }]);
         }
+        return true;
+      } catch (err) {
+        // Do not block login if DB op fails; log and continue
+        console.error("NextAuth signIn DB error:", err);
+        return true;
       }
-
-      return true;
     },
     
     async jwt({ token, user }) {

@@ -102,7 +102,7 @@ const [formData, setFormData] = useState<CardData>({
       formDataForUpload.append("file", file);
 
       // Upload file to Supabase Storage
-      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/upload`, {
+      const response = await fetch(`/api/upload`, {
         method: "POST",
         body: formDataForUpload,
       });
@@ -143,7 +143,6 @@ const [formData, setFormData] = useState<CardData>({
       ? Math.max(...formData.links.map(link => link.id)) + 1
       : 1;
 
-
     setFormData({
       ...formData,
       links: [
@@ -172,7 +171,6 @@ const [formData, setFormData] = useState<CardData>({
     const updatedLinks = formData.links.map(link =>
       link.id === id ? { ...link, [field]: value } : link
     );
-    
 
     setFormData({ ...formData, links: updatedLinks });
   };
@@ -181,29 +179,29 @@ const [formData, setFormData] = useState<CardData>({
     //console.log("Form data before submit:", formData);
     e.preventDefault();
     //console.log("Form data being sent:", formData);
-  
+
     if (!formData.img || !formData.title || !formData.description) {
       setMessage({ type: "error", content: "Please fill all required fields" });
       return;
     }
-  
+
     try {
       // Ensure ID is properly set before sending
       const dataToSend = {
         ...formData,
         id: formData.id || Date.now(), // Use timestamp as fallback if ID is not set
       };
-  
+
       //console.log("Data being sent to API:", dataToSend);
-  
-      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data`, {
+
+      const response = await fetch(`/api/data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(dataToSend),
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
         // console.error("API Error:", errorData);
