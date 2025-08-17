@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getCardData, getUsers } from "@/lib/actions/general.action";
 import Link from "next/link";
 

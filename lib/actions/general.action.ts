@@ -1,9 +1,11 @@
 export const dynamic = "force-dynamic";
 import { User } from "@/types/database";
 
-export async function getUsers(): Promise<User | null> {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/users`, {
+export async function getUsers(): Promise<User[] | []> {
+    const res = await fetch(`/api/users`, {
         method: 'GET',
+        cache: 'no-store',
+        next: { revalidate: 0 },
     });
 
     if (!res.ok) {
@@ -11,11 +13,13 @@ export async function getUsers(): Promise<User | null> {
     }
 
     const data = await res.json();
-    return data.users;
+    return data.users as User[];
 }
 export async function getCardData() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data`, {
+    const res = await fetch(`/api/data`, {
         method: 'GET',
+        cache: 'no-store',
+        next: { revalidate: 0 },
     });
 
     if (!res.ok) {
@@ -26,8 +30,10 @@ export async function getCardData() {
     return data.projects;
 }
 export async function getCurrentData(uid:number) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data/`, {
+    const res = await fetch(`/api/data/`, {
         method: 'GET',
+        cache: 'no-store',
+        next: { revalidate: 0 },
     });
 
     if (!res.ok) {
