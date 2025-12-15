@@ -55,7 +55,7 @@ export default function AdminLayout({
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gradient-to-br from-neutral-800 via-neutral-600  to-neutral-800 p-5">
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-linear-to-br from-neutral-800 via-neutral-600  to-neutral-800 p-5">
           {children}
         </main>
       </div>

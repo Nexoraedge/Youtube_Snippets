@@ -52,7 +52,7 @@ const Login_page = ({
             />{" "}
           </Link>
           <div className="flex flex-col gap-5 items-center">
-            <h1 className="text-4xl font-bold bg-clip-text  text-transparent bg-gradient-to-r text-center from-[#059393]   to-[#04c6d7]">
+            <h1 className="text-4xl font-bold bg-clip-text  text-transparent bg-linear-to-r text-center from-[#059393]   to-[#04c6d7]">
               {title}
             </h1>
             <div className="container py-5 flex flex-col items-center gap-2.5">
@@ -71,7 +71,7 @@ const Login_page = ({
                 />
               </div>
               <div className="text">
-                <p className="text-center text-lg font-semibold bg-gradient-to-l from-[#797979]   via-[#cbc9cb] to-[#797979]    bg-clip-text text-transparent ">
+                <p className="text-center text-lg font-semibold bg-linear-to-l from-[#797979]   via-[#cbc9cb] to-[#797979]    bg-clip-text text-transparent ">
                   We are happy to have you here !
                 </p>
               </div>
@@ -103,7 +103,7 @@ const Login_page = ({
             />{" "}
           </Link>
           <div className="flex flex-col items-center gap-5">
-            <h1 className="text-4xl text-center font-bold bg-clip-text text-transparent bg-gradient-to-l from-[#059393]   to-[#04c6d7]">
+            <h1 className="text-4xl text-center font-bold bg-clip-text text-transparent bg-linear-to-l from-[#059393]   to-[#04c6d7]">
               Quick Login to get instant access
             </h1>
             <div className="container  xl:max-w-[50%] items py-5 flex flex-col items-center gap-2.5">

@@ -45,12 +45,12 @@ const Page = () => {
         initial="hidden"
         animate="show"
         variants={container}
-        className="flex flex-col gap-10 overflow-auto py-6 items-center text-white px-4"
+        className="flex flex-col gap-10 overflow-auto py-6 items-center backgroundti text-white px-4"
       >
 
         <motion.h1
           variants={item}
-          className="text-3xl md:text-5xl mt-7 font-bold flex items-center justify-center flex-wrap"
+          className="text-3xl md:text-5xl mt-7 font-saira font-bold flex items-center justify-center flex-wrap"
         >
           Hello
           <motion.span
@@ -62,24 +62,10 @@ const Page = () => {
               repeat: Infinity,
               repeatType: "reverse"
             }}
-            className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 bg-clip-text text-transparent mx-2 px-1"
+            className="bg-linear-to-r font-saira from-gray-600 via-gray-500 to-gray-400 bg-clip-text text-transparent mx-2 px-1"
           >
             {session?.user?.name|| "Player"}
-          </motion.span>
-          Welcome
-          <motion.img
-            animate={{
-              rotate: [0, 10, -10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "loop"
-            }}
-            src="/asset/rose.gif"
-            className="h-8 w-8 ml-2"
-            alt="rose"
-          />
+          </motion.span>       
         </motion.h1>
 
         <motion.div
@@ -89,14 +75,14 @@ const Page = () => {
 
           {/* My Content Section with Horizontal Scroll */}
           <motion.div
-            whileHover={{ scale: 1.005 }}
+            
             transition={{ type: "spring", stiffness: 300 }}
-            className="flex flex-col w-full lg:w-[60vw] bg-gradient-to-br from-slate-800/60 via-purple-900/20 to-slate-800/60 backdrop-blur-xl border border-purple-500/40 rounded-3xl overflow-hidden shadow-2xl shadow-purple-500/20 relative"
+            className="flex flex-col w-full lg:w-[60vw] bg-linear-to-br from-slate-800/60 via-gray-900/20 to-slate-800/60 backdrop-blur-xl border border-zinc-500/40 rounded-3xl overflow-hidden shadow-sm shadow-zinc-500/20 relative"
           >
             
             {/* Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-pink-600/5 to-blue-600/5"></div>
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500"></div>
+            {/* <div className="absolute inset-0 bg-linear-to-br from-purple-600/5 via-pink-600/5 to-blue-600/5"></div> */}
+            
             
             {/* Header */}
             <div className="relative z-10 px-8 py-10">
@@ -104,7 +90,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-purple-300 via-pink-400 to-purple-300 bg-clip-text text-transparent"
+                className="text-3xl md:text-4xl font-bold text-center bg-linear-to-r font-saira from-gray-100  to-gray-100 bg-clip-text text-transparent"
               >
                 My Content
               </motion.h2>
@@ -128,7 +114,7 @@ const Page = () => {
                   className="flex gap-8 overflow-x-auto scrollbar-custom pb-4"
                   style={{
                     scrollbarWidth: 'thin',
-                    scrollbarColor: '#8b5cf6 #1e293b'
+                    scrollbarColor: '#1f1f1f #111'
                   }}
                 >
                   {card_passingdata.map((card_data, index:number) => (
@@ -142,7 +128,7 @@ const Page = () => {
                     <motion.p
                       animate={{ opacity: [0.5, 1, 0.5] }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className="text-purple-300 mt-4 text-center text-lg"
+                      className="text-purple-300 mt-4 font-saira text-center text-lg"
                     >
                       Loading projects...
                     </motion.p>
@@ -153,25 +139,22 @@ const Page = () => {
               
             </div>
             
-           {/* <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-slate-800/80 to-transparent pointer-events-none z-20"></div> */}
+           {/* <div className="absolute top-0 left-0 w-20 h-full bg-linear-to-r from-slate-800/80 to-transparent pointer-events-none z-20"></div> */}
           </motion.div>
 
           {/* TicTacToe Game Section */}
           <motion.div
-            whileHover={{ scale: 1.005 }}
+            
             transition={{ type: "spring", stiffness: 300 }}
-            className="flex flex-col w-full lg:w-[60vw] bg-gradient-to-br from-slate-800/60 via-purple-900/20 to-slate-800/60 backdrop-blur-xl border border-purple-500/40 rounded-3xl p-8 shadow-2xl shadow-purple-500/20 relative overflow-hidden"
+            className="flex flex-col w-full lg:w-[60vw] bg-linear-to-br from-slate-800/60 via-purple-900/20 to-slate-800/60 backdrop-blur-xl border border-gray-500/40 rounded-3xl p-8 shadow-sm shadow-zinc-500/20 relative overflow-hidden"
           >
             
-            {/* Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-pink-600/5"></div>
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
             
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-300 via-purple-400 to-pink-300 bg-clip-text text-transparent relative z-10"
+              className="text-3xl md:text-4xl font-bold text-center mb-8 bg-linear-to-r font-saira from-gray-100  to-gray-200 bg-clip-text text-transparent relative z-10"
             >
               Play a while
             </motion.h2>

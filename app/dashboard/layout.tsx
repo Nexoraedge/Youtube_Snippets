@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Footer from "@/components/Footer";
 
 
+
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const { data: session, status } = useSession();
 
@@ -22,7 +23,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     );
   }
   return (
-    <div className="min-h-screen bg-gradient-to-b -z-10 from-[#0f0c29] via-[#302b63]  to-[#24243e]">
+    <div className="min-h-screen   ">
   
      <Navbar/>
       {children}

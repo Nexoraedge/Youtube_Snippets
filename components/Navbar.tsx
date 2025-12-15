@@ -27,7 +27,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className='w-full z-50 h-20 flex items-center fixed top-0 justify-between px-10 sm:px-15 backdrop-blur-lg'>
+    <header className='w-full z-50 h-20 flex items-center fixed top-0 justify-between px-10 sm:px-15 bg-black'>
       <Link href={session?.user ? "/dashboard" : '/'}>
         <Image src="/img/avatar.jpg" alt="logo" width={50} height={50} className='rounded-md object-contain' />
       </Link>

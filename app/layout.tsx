@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Roboto_Slab} from "next/font/google";
+import { Roboto_Slab , Saira} from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
 import { Analytics } from "@vercel/analytics/next"
@@ -9,6 +9,10 @@ import Report_bug from "@/components/Report_bug";
 
 const geistSans = Roboto_Slab({
   variable: "--font-roboto-slab",
+  subsets: ["latin"],
+});
+const getSaira = Saira({
+  variable: "--font-saira",
   subsets: ["latin"],
 });
 
@@ -28,7 +32,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} min-h-screen overflow-x-hidden  antialiased`}
+        className={`${geistSans.variable} ${getSaira.variable} min-h-screen overflow-x-hidden  antialiased`}
       >
         
        <Providers>

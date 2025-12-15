@@ -19,11 +19,11 @@ const Card_Content = ({data}: {data: card_data}) => {
         stiffness: 400, 
         damping: 17 
       }}
-      className="flex-shrink-0 w-[340px] sm:w-[400px] flex flex-col relative bg-gradient-to-br from-slate-800/90 via-purple-900/50 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 max-sm:px-4  h-[520px] shadow-2xl shadow-purple-900/40 border border-purple-500/30 hover:border-purple-400/50 group overflow-hidden"
+      className="shrink-0 w-[340px] sm:w-[400px] flex flex-col relative bg-linear-to-br from-slate-800/90 via-purple-900/50 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 max-sm:px-4  h-[520px] shadow-2xl shadow-purple-900/40 border border-purple-500/30 hover:border-purple-400/50 group overflow-hidden"
     >
       
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-600/5 to-blue-600/10 rounded-3xl"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-purple-600/10 via-pink-600/5 to-blue-600/10 rounded-3xl"></div>
       
       {/* Animated background particles */}
       <div className="absolute inset-0 opacity-30">
@@ -39,8 +39,8 @@ const Card_Content = ({data}: {data: card_data}) => {
         transition={{ type: "spring", stiffness: 300 }}
         className="relative z-10 mb-6"
       >
-        <div className="relative bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl p-4 shadow-xl border border-purple-500/30 backdrop-blur-sm">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-2xl blur-sm"></div>
+        <div className="relative bg-linear-to-r from-purple-600/20 to-pink-600/20 rounded-2xl p-4 shadow-xl border border-purple-500/30 backdrop-blur-sm">
+          <div className="absolute inset-0 bg-linear-to-r from-purple-600/10 to-pink-600/10 rounded-2xl blur-sm"></div>
           <Image 
             src={img} 
             alt={title} 
@@ -56,13 +56,13 @@ const Card_Content = ({data}: {data: card_data}) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="flex flex-col gap-4 flex-grow relative z-10"
+        className="flex flex-col gap-4 grow relative z-10"
       >
-        <h2 className="title font-bold tracking-wide text-2xl leading-tight bg-gradient-to-r from-purple-300 via-pink-400 to-purple-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:via-pink-300 group-hover:to-purple-200 transition-all duration-300">
+        <h2 className="title font-bold tracking-wide text-2xl leading-tight bg-linear-to-r from-purple-300 via-pink-400 to-purple-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:via-pink-300 group-hover:to-purple-200 transition-all duration-300">
           {title}
         </h2>
         
-        <div className="flex-grow">
+        <div className="grow">
           <p className="description font-medium text-gray-300/90 leading-relaxed text-sm line-clamp-6 group-hover:text-gray-200/95 transition-colors duration-300">
             {description}
           </p>
@@ -77,7 +77,7 @@ const Card_Content = ({data}: {data: card_data}) => {
           whileHover={{ scale: 1.05 }}
           className="techstack flex justify-center"
         >
-          <div className="flex -space-x-3 p-3 rounded-2xl bg-gradient-to-r from-purple-800/40 to-purple-900/40 shadow-inner shadow-purple-950/50 border border-purple-600/40 backdrop-blur-sm">
+          <div className="flex -space-x-3 p-3 rounded-2xl bg-linear-to-r from-purple-800/40 to-purple-900/40 shadow-inner shadow-purple-950/50 border border-purple-600/40 backdrop-blur-sm">
             {techstack.map((tech, index:number) => (
               <motion.div
                 key={index}
@@ -107,7 +107,7 @@ const Card_Content = ({data}: {data: card_data}) => {
         >
           <Link 
             href={`${process.env.NEXT_PUBLIC_URL}/${id}/`} 
-            className="link px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-800/60 border border-purple-500/30 hover:border-purple-400/50 group/btn"
+            className="link px-6 py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-800/60 border border-purple-500/30 hover:border-purple-400/50 group/btn"
           >
             <span>View Project</span>
             <motion.svg 
@@ -130,7 +130,7 @@ const Card_Content = ({data}: {data: card_data}) => {
       </div>
       
       {/* Bottom gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none rounded-b-3xl"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-slate-900/80 to-transparent pointer-events-none rounded-b-3xl"></div>
     </motion.div>
   );
 };

@@ -181,7 +181,7 @@ const Report_bug = () => {
                     onClick={() => setOpen(true)}
                     className='bg-red-500 cursor-pointer hover:bg-red-600 text-white p-4 rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:scale-110 hover:rotate-12 group relative overflow-hidden'
                 >
-                    <div className='absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+                    <div className='absolute inset-0 bg-linear-to-r from-red-600 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
                     <BugIcon className='w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-300' />
                     
                     {/* Pulse animation */}

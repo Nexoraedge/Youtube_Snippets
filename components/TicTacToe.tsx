@@ -224,12 +224,12 @@ const TicTacToe = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-3.5 w-full  bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 text-white rounded-lg">
+    <div className="flex flex-col items-center justify-center py-3.5 w-full  bg-linear-to-b from-slate-900 via-purple-900 to-slate-900 text-white rounded-lg">
       <motion.h1 
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-2xl font-bold mb-2 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text"
+        className="text-2xl font-bold mb-2 bg-linear-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text"
       >
         ✨ Tic Tac Toe ✨
       </motion.h1>
@@ -303,7 +303,7 @@ const TicTacToe = () => {
             whileHover={{ scale: cell ? 1.02 : 1.05 }}
             whileTap={{ scale: 0.95 }}
             className={`w-16 h-16 rounded-lg text-xl font-bold 
-                       bg-gradient-to-br ${getCellBackgroundStyle(index, cell)} 
+                       bg-linear-to-br ${getCellBackgroundStyle(index, cell)} 
                        shadow-md shadow-purple-500/20 transition-colors duration-300
                        border border-white/10 backdrop-blur-sm`}
             onClick={() => handleClick(index)}
@@ -355,7 +355,7 @@ const TicTacToe = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={handleReset}
-        className="mt-2 px-4 py-1 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 
+        className="mt-2 px-4 py-1 bg-linear-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 
                   text-white font-medium text-sm rounded-full shadow-md shadow-purple-500/40 transition-all duration-300"
       >
         New Game

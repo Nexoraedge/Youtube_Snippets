@@ -6,7 +6,7 @@ const SupportCTA = () => {
   return (
     <section className="w-full pb-20 px-4">
       <div className="max-w-4xl mx-auto">
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-[#00C896]/15 via-black to-black backdrop-blur-xl px-5 py-6 sm:px-7 sm:py-7">
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-linear-to-r from-[#00C896]/15 via-black to-black backdrop-blur-xl px-5 py-6 sm:px-7 sm:py-7">
           {/* Subtle top spotlight */}
           <div className="pointer-events-none absolute inset-x-0 -top-20 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),_transparent_60%)] opacity-70" />
 

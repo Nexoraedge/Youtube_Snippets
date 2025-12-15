@@ -45,5 +45,5 @@ export async function middleware(request: NextRequest) {
 
 // Only run middleware on these paths
 export const config = {
-  matcher: ["/admin/:path*", "/api/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/admin/:path*","/upload/:path*"],
 };

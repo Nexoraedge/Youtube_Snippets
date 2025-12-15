@@ -28,7 +28,7 @@ const Login_page = () => {
                 <div className=" backdrop-blur-sm border-[1px]    flex flex-col  px-10 py-7 rounded-t-full rounded-2xl items-center justify-center ">
                   <Link href={'/'} > <Image src={"/img/avatar.jpg"}  alt="logo" width={100} height={100} className='rounded-full my-5 object-contain' /> </Link>
                     <div className="flex flex-col gap-5 items-center">
-                        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#059393]   to-[#04c6d7]">Login</h1>
+                        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-[#059393]   to-[#04c6d7]">Login</h1>
                         <div className="container py-5 flex flex-col items-center gap-2.5">
                             {/* Google */}
                             <button
