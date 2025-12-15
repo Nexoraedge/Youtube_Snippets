@@ -35,7 +35,7 @@ export default async function RootLayout({
        
           {children}
           <Report_bug/>
-          <Analytics />    
+          <Analytics />     
        </Providers>
        
       </body>

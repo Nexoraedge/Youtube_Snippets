@@ -51,7 +51,7 @@ const VideoKitPage = (props: card_data) => {
                     className="rounded-lg "
                   />
                   <div className="title w-full flex flex-col gap-3 ">
-                    <h2 className="text-2xl max-md:text-center md:text-3xl bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 bg-clip-text text-transparent font-semibold">
+                    <h2 className="text-2xl max-md:text-center md:text-3xl bg-gradient-to-r from-zinc-200  to-zinc-500 bg-clip-text text-transparent font-semibold">
                       {title}
                     </h2>
                     <Link

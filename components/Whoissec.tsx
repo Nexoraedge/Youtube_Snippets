@@ -39,17 +39,13 @@ const WhoIsSec = () => {
         <motion.div
           key={id}
           variants={item}
-          className="group relative flex flex-col rounded-2xl overflow-hidden card-hover"
+          className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#050505]/80 backdrop-blur-xl p-4 sm:p-5"
         >
           {/* Card background with gradient */}
-          <div className="absolute inset-0 bg-slate-800/70 backdrop-blur-md rounded-2xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-r opacity-30 rounded-2xl" 
-            style={{ backgroundImage: `linear-gradient(to right, ${color}20, transparent)` }}></div>
+          <div className="pointer-events-none absolute inset-px rounded-2xl bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.06),_transparent_55%)] opacity-0 group-hover:opacity-100 transition-opacity" />
           
           {/* Border glow effect */}
-          <div className="absolute inset-0 rounded-2xl border border-gray-700 group-hover:border-opacity-0 transition-all duration-300"></div>
-          <div className="absolute inset-0 rounded-2xl border border-opacity-0 group-hover:border-opacity-100 transition-all duration-300"
-            style={{ borderColor: color }}></div>
+          <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-white/15 transition-all duration-300"></div>
           
           <div className="relative flex items-start p-6 z-10">
             {/* Image with glow effect */}
@@ -57,7 +53,7 @@ const WhoIsSec = () => {
               <div className="relative">
                 <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-300" 
                   style={{ backgroundColor: color }}></div>
-                <div className="relative bg-slate-900/80 backdrop-blur-lg p-4 rounded-xl border border-gray-700">
+                <div className="relative bg-slate-900/80 backdrop-blur-lg p-4 rounded-xl border border-white/10">
                   <Image
                     src={img}
                     alt={title}
@@ -74,14 +70,14 @@ const WhoIsSec = () => {
               <h3 className="text-2xl font-bold mb-2" style={{ color }}>
                 {title}
               </h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-slate-300/90 mb-4">
                 {description}
               </p>
               
               {/* Animated indicator */}
               <div className="flex items-center mt-2">
                 <div className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: color }}></div>
-                <span className="text-sm font-medium" style={{ color }}>Perfect match</span>
+                <span className="text-sm font-medium text-slate-400" style={{ color }}>Perfect match</span>
               </div>
             </div>
             

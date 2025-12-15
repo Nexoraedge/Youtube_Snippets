@@ -8,7 +8,7 @@ import React, { useState, useEffect, useRef } from 'react'
 const Navbar = () => {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
 
   const handleToggle = () => setOpen(prev => !prev);

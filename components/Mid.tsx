@@ -3,13 +3,17 @@ import Whoissec from "@/components/Whoissec";
 
 const Mid = () => {
   return (
-    <section className="mt-20 mb-20 container mx-auto">
-      <div className="mx-5 px-2 flex items-center justify-center relative right-3  w-full flex-col gap-7">
-        <h2 className="text-2xl sm:text-3xl relative right-5 font-bold tracking-wide text-neutral-50 md:text-4xl">
-          Who is this for?
-        </h2>
+    <section id="who" className="w-full pb-16 px-4">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-50">
+            Who is this for?
+          </h2>
+          <div className="hidden sm:inline-flex text-xs text-slate-400">
+            Tailored for different roles
+          </div>
+        </div>
         <Whoissec />
-        
       </div>
     </section>
   );
