@@ -2,6 +2,7 @@
 import { BugIcon, XIcon, Send, User, Mail, AlertTriangle } from 'lucide-react'
 import { toast, ToastContainer } from 'react-toastify'
 import React, { useState } from 'react'
+import { motion } from "framer-motion"
 
 const Report_bug = () => {
 
@@ -33,11 +34,11 @@ const Report_bug = () => {
             const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/error`, {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json",
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(form_Data),
-              });
-            
+            });
+
             setSubmitted(true)
             //popup
             notify()
@@ -58,16 +59,21 @@ const Report_bug = () => {
 
     return (
 
-        <div className='flex bottom-5 right-5 fixed z-50'>
+        <motion.div
+            drag
+            initial={{bottom:5 , right:5}}
+            dragConstraints={{ top: 0, left: 0, right: 100, bottom: 100 }} // Limits movement
+            whileDrag={{ scale: 1.1 }} // Scale up while dragging
+            className='flex fixed z-50'>
             <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} closeOnClick={false} theme="dark" />
             {open && (
                 <>
                     {/* Backdrop */}
-                    <div 
+                    <div
                         className='fixed inset-0 bg-black/20 backdrop-blur-sm z-40'
                         onClick={() => setOpen(false)}
                     />
-                    
+
                     {/* Modal */}
                     <div className='bg-gray-900/95 backdrop-blur-md border border-gray-700/50 w-[90vw] max-w-md rounded-2xl h-auto max-h-[80vh] z-50 fixed bottom-5 right-5 shadow-2xl shadow-black/50'>
                         {/* Header */}
@@ -78,7 +84,7 @@ const Report_bug = () => {
                                 </div>
                                 <h3 className='text-lg font-semibold text-white'>Report Bug</h3>
                             </div>
-                            <button 
+                            <button
                                 onClick={() => setOpen(false)}
                                 className='p-2 hover:bg-gray-800 cursor-pointer rounded-lg transition-colors duration-200 text-gray-400 hover:text-white'
                             >
@@ -94,7 +100,7 @@ const Report_bug = () => {
                                     <User className='w-4 h-4' />
                                     Your Name
                                 </label>
-                                <input 
+                                <input
                                     type="text"
                                     name="name"
                                     value={form_Data.name}
@@ -111,7 +117,7 @@ const Report_bug = () => {
                                     <Mail className='w-4 h-4' />
                                     Email
                                 </label>
-                                <input 
+                                <input
                                     type="email"
                                     name="email"
                                     value={form_Data.email}
@@ -128,7 +134,7 @@ const Report_bug = () => {
                                     <AlertTriangle className='w-4 h-4' />
                                     Describe the Issue
                                 </label>
-                                <textarea 
+                                <textarea
                                     name="issue"
                                     value={form_Data.issue}
                                     onChange={handleInputChange}
@@ -144,13 +150,12 @@ const Report_bug = () => {
                                 <button
                                     onClick={handleSubmit}
                                     disabled={!isFormValid || isSubmitting}
-                                    className={`w-full py-3 px-4 rounded-lg cursor-pointer font-medium transition-all duration-200 flex items-center justify-center gap-2 ${
-                                        submitted 
-                                            ? 'bg-green-500 text-white' 
+                                    className={`w-full py-3 px-4 rounded-lg cursor-pointer font-medium transition-all duration-200 flex items-center justify-center gap-2 ${submitted
+                                            ? 'bg-green-500 text-white'
                                             : isFormValid && !isSubmitting
                                                 ? 'bg-red-500 hover:bg-red-600 text-white shadow-lg hover:shadow-red-500/25 hover:scale-[1.02]'
                                                 : 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                                    }`}
+                                        }`}
                                 >
                                     {submitted ? (
                                         <>
@@ -174,21 +179,21 @@ const Report_bug = () => {
                     </div>
                 </>
             )}
-            
+
             {/* Floating Action Button */}
             {!open && (
-                <button 
+                <button
                     onClick={() => setOpen(true)}
                     className='bg-red-500 cursor-pointer hover:bg-red-600 text-white p-4 rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 hover:scale-110 hover:rotate-12 group relative overflow-hidden'
                 >
                     <div className='absolute inset-0 bg-linear-to-r from-red-600 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
                     <BugIcon className='w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-300' />
-                    
+
                     {/* Pulse animation */}
                     <div className='absolute inset-0 rounded-full bg-red-500 opacity-20 animate-ping'></div>
                 </button>
             )}
-        </div>
+        </motion.div>
     )
 }
 
