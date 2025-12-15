@@ -39,7 +39,7 @@ const HeroSection = () => {
           </Link>
 
           <Link
-            href="dashboard"
+            href="/work"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium border border-white/10 text-slate-100 hover:bg-white/5 transition-colors sm:ml-3 mt-2 sm:mt-0"
           >
             View Work
