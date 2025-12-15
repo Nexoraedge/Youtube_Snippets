@@ -196,7 +196,7 @@ const TicTacToe = () => {
       return 'from-red-400 to-red-600';
     }
     
-    return 'from-purple-500/30 to-indigo-500/30';
+    return 'from-gray-500/30 to-indigo-500/30';
   };
 
   const getCellContent = (value) => {
@@ -224,12 +224,12 @@ const TicTacToe = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-3.5 w-full  bg-linear-to-b from-slate-900 via-purple-900 to-slate-900 text-white rounded-lg">
+    <div className="flex flex-col items-center justify-center py-3.5 w-full  bg-linear-to-b from-slate-900 via-gray-900 to-slate-900 text-white rounded-lg">
       <motion.h1 
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-2xl font-bold mb-2 bg-linear-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text"
+        className="text-2xl font-bold mb-2 bg-linear-to-r from-gray-400 via-zinc-500 to-red-500 text-transparent bg-clip-text"
       >
         ✨ Tic Tac Toe ✨
       </motion.h1>
@@ -259,7 +259,7 @@ const TicTacToe = () => {
             <select 
               value={difficulty}
               onChange={(e) => changeDifficulty(e.target.value)}
-              className="px-2 py-1 text-xs bg-purple-500 hover:bg-purple-600 rounded-md transition-all"
+              className="px-2 py-1 text-xs bg-gray-500 hover:bg-gray-600 rounded-md transition-all"
             >
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
@@ -304,7 +304,7 @@ const TicTacToe = () => {
             whileTap={{ scale: 0.95 }}
             className={`w-16 h-16 rounded-lg text-xl font-bold 
                        bg-linear-to-br ${getCellBackgroundStyle(index, cell)} 
-                       shadow-md shadow-purple-500/20 transition-colors duration-300
+                       shadow-md shadow-gray-500/20 transition-colors duration-300
                        border border-white/10 backdrop-blur-sm`}
             onClick={() => handleClick(index)}
           >
@@ -355,8 +355,8 @@ const TicTacToe = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={handleReset}
-        className="mt-2 px-4 py-1 bg-linear-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 
-                  text-white font-medium text-sm rounded-full shadow-md shadow-purple-500/40 transition-all duration-300"
+        className="mt-2 px-4 py-1 bg-black cursor-pointer hover:from-gray-600 hover:to-zinc-500 
+                  text-white font-medium text-sm rounded-full shadow-md shadow-gray-500/40 transition-all duration-300"
       >
         New Game
       </motion.button>

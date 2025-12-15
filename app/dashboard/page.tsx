@@ -128,9 +128,9 @@ const Page = () => {
                     <motion.p
                       animate={{ opacity: [0.5, 1, 0.5] }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className="text-purple-300 mt-4 font-saira text-center text-lg"
+                      className="text-purple-200 mt-4 font-saira text-center text-lg"
                     >
-                      Loading projects...
+                      Plz wait for a moment.
                     </motion.p>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ const Page = () => {
           <motion.div
             
             transition={{ type: "spring", stiffness: 300 }}
-            className="flex flex-col w-full lg:w-[60vw] bg-linear-to-br from-slate-800/60 via-purple-900/20 to-slate-800/60 backdrop-blur-xl border border-gray-500/40 rounded-3xl p-8 shadow-sm shadow-zinc-500/20 relative overflow-hidden"
+            className="flex flex-col w-full lg:w-[60vw] bg-linear-to-br from-slate-800/60 via-gray-900/20 to-slate-800/60 backdrop-blur-xl border border-gray-500/40 rounded-3xl p-8 shadow-sm shadow-zinc-500/20 relative overflow-hidden"
           >
             
             

@@ -12,41 +12,37 @@ const Card_Content = ({data}: {data: card_data}) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       whileHover={{ 
-        boxShadow: "0 25px 50px -12px rgba(139, 92, 246, 0.4), 0 20px 25px -5px rgba(168, 85, 247, 0.3)" 
+        boxShadow: "0 5px 5px -2px rgba(71, 80, 89, 0.4), 0 2px 5px -2px rgba(71, 80, 89, 0.3)" 
       }}
       transition={{ 
         type: "spring", 
         stiffness: 400, 
         damping: 17 
       }}
-      className="shrink-0 w-[340px] sm:w-[400px] flex flex-col relative bg-linear-to-br from-slate-800/90 via-purple-900/50 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 max-sm:px-4  h-[520px] shadow-2xl shadow-purple-900/40 border border-purple-500/30 hover:border-purple-400/50 group overflow-hidden"
+      className="shrink-0 w-[340px] sm:w-[400px] flex flex-col relative bg-linear-to-br from-gray-800/90  to-zinc-900/90 rounded-2xl p-8 max-sm:px-4  h-[520px]  border border-gray-400/30 hover:border-gray-200/50 group overflow-hidden shadow-sm shadow-zinc-500/20 "
     >
       
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-linear-to-br from-purple-600/10 via-pink-600/5 to-blue-600/10 rounded-3xl"></div>
       
       {/* Animated background particles */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 left-10 w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-20 right-16 w-1 h-1 bg-pink-400 rounded-full animate-ping"></div>
-        <div className="absolute bottom-20 left-16 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+      <div className="absolute inset-0 opacity-90">
+        <div className="absolute top-10 left-10 w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
       </div>
       
       {/* Image section */}
       <motion.div 
         initial={{ y: 0, scale: 1 }}
-        whileHover={{ y: -8, scale: 1.05 }}
+        whileHover={{ y: -2, scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300 }}
         className="relative z-10 mb-6"
       >
-        <div className="relative bg-linear-to-r from-purple-600/20 to-pink-600/20 rounded-2xl p-4 shadow-xl border border-purple-500/30 backdrop-blur-sm">
-          <div className="absolute inset-0 bg-linear-to-r from-purple-600/10 to-pink-600/10 rounded-2xl blur-sm"></div>
+        <div className="relative bg-linear-to-r from-zinc-600/20 to-zinc-600/20 rounded-2xl p-4 shadow-md border border-gray-500/30 backdrop-blur-sm">
+          {/* <div className="absolute inset-0 bg-linear-to-r from-purple-600/10 to-pink-600/10 rounded-2xl blur-sm"></div> */}
           <Image 
             src={img} 
             alt={title} 
             width={120} 
             height={120} 
-            className="relative z-10 rounded-xl object-contain hover:rotate-6 transition-all duration-500 shadow-lg" 
+            className="relative z-10 rounded-xl object-contain hover:rotate-6 transition-all duration-500 shadow-sm p-2 shadow-gray-500" 
           />
         </div>
       </motion.div>
@@ -58,12 +54,12 @@ const Card_Content = ({data}: {data: card_data}) => {
         transition={{ delay: 0.1 }}
         className="flex flex-col gap-4 grow relative z-10"
       >
-        <h2 className="title font-bold tracking-wide text-2xl leading-tight bg-linear-to-r from-purple-300 via-pink-400 to-purple-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:via-pink-300 group-hover:to-purple-200 transition-all duration-300">
+        <h2 className="title font-bold tracking-wide text-2xl leading-tight bg-linear-to-r from-gray-200  to-gray-200 text-transparent bg-clip-text group-hover:from-gray-200 group-hover:via-gray-200 group-hover:to-white transition-all duration-300">
           {title}
         </h2>
         
         <div className="grow">
-          <p className="description font-medium text-gray-300/90 leading-relaxed text-sm line-clamp-6 group-hover:text-gray-200/95 transition-colors duration-300">
+          <p className="description font-normal text-gray-400/90 leading-relaxed text-sm line-clamp-6 group-hover:text-gray-400/95 transition-colors duration-300">
             {description}
           </p>
         </div>
@@ -74,10 +70,10 @@ const Card_Content = ({data}: {data: card_data}) => {
         
         {/* Tech stack */}
         <motion.div 
-          whileHover={{ scale: 1.05 }}
+          
           className="techstack flex justify-center"
         >
-          <div className="flex -space-x-3 p-3 rounded-2xl bg-linear-to-r from-purple-800/40 to-purple-900/40 shadow-inner shadow-purple-950/50 border border-purple-600/40 backdrop-blur-sm">
+          <div className="flex -space-x-3 p-3 rounded-2xl bg-linear-to-r from-gray-400/40 to-gray-050/40 shadow-inner  border border-zinc-600/40 backdrop-blur-sm">
             {techstack.map((tech, index:number) => (
               <motion.div
                 key={index}
@@ -85,7 +81,7 @@ const Card_Content = ({data}: {data: card_data}) => {
                 transition={{ type: "spring", stiffness: 400 }}
                 className="relative z-0 hover:z-10"
               >
-                <div className="w-8 h-8 rounded-full bg-slate-800/80 border border-purple-500/30 flex items-center justify-center shadow-lg hover:shadow-purple-500/50 transition-all duration-300">
+                <div className="w-8 h-8 rounded-full cursor-grab bg-slate-800/80 border border-gray-500/30 flex items-center justify-center shadow-sm transition-all duration-300">
                   <Image 
                     src={tech} 
                     alt="tech stack" 
@@ -101,13 +97,13 @@ const Card_Content = ({data}: {data: card_data}) => {
         
         {/* Link button */}
         <motion.div
-          whileHover={{ scale: 1.05 }}
+          
           whileTap={{ scale: 0.95 }}
           className="flex  justify-center"
         >
           <Link 
             href={`${process.env.NEXT_PUBLIC_URL}/${id}/`} 
-            className="link px-6 py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-800/60 border border-purple-500/30 hover:border-purple-400/50 group/btn"
+            className="link px-6 py-3 bg-linear-to-r from-gray-600 hover:from-gray-500 hover:to-gray-900 text-white font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 shadow-sm hover:shadow-lg border border-gray-500/30 hover:border-gray-400/50 group/btn"
           >
             <span>View Project</span>
             <motion.svg 
