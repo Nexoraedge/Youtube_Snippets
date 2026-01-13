@@ -8,8 +8,8 @@ const HeroSection = () => {
       <div className="max-w-4xl mx-auto text-center">
         {/* Badge */}
         <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200 mb-6">
-          <span className="mr-2">🚀</span>
-          <span>Building AI Tools &amp; Teaching 1.6k+ Devs</span>
+          <span className="p-[3] mr-1 bg-[#00C896] rounded"></span>
+          <span>Building AI Tools &amp; Helping 2k+ Devs</span>
         </div>
 
         {/* Heading */}
@@ -39,7 +39,7 @@ const HeroSection = () => {
           </Link>
 
           <Link
-            href="/work"
+            href="/dashboard"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium border border-white/10 text-slate-100 hover:bg-white/5 transition-colors sm:ml-3 mt-2 sm:mt-0"
           >
             View Work

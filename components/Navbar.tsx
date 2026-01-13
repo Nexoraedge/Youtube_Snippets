@@ -9,11 +9,11 @@ const Navbar = () => {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
+
 
   const handleToggle = () => setOpen(prev => !prev);
 
-  const handleClickOutside = (e:any) => {
+  const handleClickOutside = (e: any) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setOpen(false);
     }
@@ -38,18 +38,18 @@ const Navbar = () => {
             <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} /> Resources
           </li>
           <li className='hover-text cursor-pointer flex gap-1'>
-            <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} /> Test_Links
+            <Link href={'/about'}>About us</Link>
           </li>
         </ul>
       </nav>
 
       {status === 'unauthenticated' ? (
         <Link href={'/login'}>
-          <button  className="relative inline-flex h-12 max-sm:h-10  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                                <span className="absolute inset-[-1000%]  bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full max-sm:px-3  px-5 py-1 text-sm max-sm:text-xs font-medium text-white backdrop-blur-3xl">
-                                    Login                                </span>
-                            </button>
+          <button className="relative inline-flex h-12 max-sm:h-10  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+            <span className="absolute inset-[-1000%]  bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full max-sm:px-3  px-5 py-1 text-sm max-sm:text-xs font-medium text-white backdrop-blur-3xl">
+              Login                                </span>
+          </button>
         </Link>
       ) : (
         session?.user?.image && (
@@ -73,11 +73,11 @@ const Navbar = () => {
                 <ul className=" text-sm py-2 text-gray-700 dark:text-gray-200">
                   <li>
                     <Link href="/dashboard" className="flex gap-2 items-center px-4 py-2  bg-gray-700 ">
-                    <Image src={"/asset/home.gif"} alt="dashboard" width={20} height={20} />Dashboard</Link>
+                      <Image src={"/asset/home.gif"} alt="dashboard" width={20} height={20} />Dashboard</Link>
                   </li>
                   <li>
                     <Link href="/dashboard" className=" px-4 py-2 text-gray-500 items-center flex gap-2">
-                   <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} />Settings
+                      <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} />Settings
                     </Link>
                   </li>
                 </ul>
@@ -97,7 +97,7 @@ const Navbar = () => {
       )}
     </header>
   )
-  
+
 }
 
 export default Navbar;
