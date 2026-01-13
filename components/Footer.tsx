@@ -6,14 +6,17 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex h-20 backdrop-blur-md gap-2 px-5 sm:justify-between justify-center flex-col-reverse sm:flex-row items-center  rounded-tr-4xl rounded-tl-4xl w-full ">
-      <div className="text-neutral-50 cursor-pointer hover:text-neutral-500">
-        ©Copyright 2025 DevDhoni-Ai
+    <footer className="flex h-40 backdrop-blur-md gap-2 px-5 sm:justify-between justify-center flex-col-reverse sm:flex-row items-center  rounded-tr-4xl rounded-tl-4xl w-full ">
+      <div className="text-neutral-50 cursor hover:text-neutral-500">
+        ©Copyright 2026 DevDhoni-Ai
       </div>
       <div className="img flex gap-2">
-        
+
         <Link target="_blank" href={"https://x.com/DhoniAi"} className="inline-block">
           <FaXTwitter size={24} color="gray" />
+        </Link>
+        <Link target="_blank" href={"https://www.instagram.com/dhoni.dev_ai"} className="inline-block">
+          <FaInstagram size={24} color="pink" />
         </Link>
         <Link
           href={"https://www.linkedin.com/in/devdhoni-ai/"}

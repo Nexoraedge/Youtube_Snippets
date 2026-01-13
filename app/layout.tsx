@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Roboto_Slab , Saira} from "next/font/google";
+import { Roboto_Slab, Saira } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
 import { Analytics } from "@vercel/analytics/next"
@@ -28,20 +28,24 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
+
   return (
     <html lang="en">
+      <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3019966740942573"
+          crossOrigin="anonymous"></script>
+      </head>
       <body
         className={`${geistSans.variable} ${getSaira.variable} min-h-screen overflow-x-hidden  antialiased`}
       >
-        
-       <Providers>
-       
+
+        <Providers>
+
           {children}
-          <Report_bug/>
-          <Analytics />     
-       </Providers>
-       
+          <Report_bug />
+          <Analytics />
+        </Providers>
+
       </body>
     </html>
   );

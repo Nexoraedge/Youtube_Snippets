@@ -1,8 +1,8 @@
 // components/StatsStrip.tsx
 
 const stats = [
-  { label: "YouTube Subs", value: "1.6k+" },
-  { label: "Views", value: "50k+" },
+  { label: "YouTube Subs", value: "2k+" },
+  { label: "Views", value: "910k+" },
   { label: "Open Source Repos", value: "10+" },
   { label: "Comment replied", value: "100%" },
 ];
