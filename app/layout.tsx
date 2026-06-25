@@ -1,14 +1,13 @@
 
 import type { Metadata } from "next";
-import { Roboto_Slab, Saira } from "next/font/google";
+import { Inter, Outfit, Saira } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
 import { Analytics } from "@vercel/analytics/next"
 import Report_bug from "@/components/Report_bug";
-// import { SessionProvider } from "next-auth/react";
 
-const geistSans = Roboto_Slab({
-  variable: "--font-roboto-slab",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 const getSaira = Saira({
@@ -16,11 +15,14 @@ const getSaira = Saira({
   subsets: ["latin"],
 });
 
-
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "DevDhoni-AI",
-  description: "Learn and Explore about AI , AI related tools and AI related projects . This page is by DevdhoniAi youtube creater. You can find more about AI and AI related tools and AI related projects on this page and Assets  , Links and Snippets are also available on this page. ",
+  title: "DhoniDev-Ai",
+  description: "DhoniDev-Ai - Turning Code into Digital Empires",
 };
 
 export default async function RootLayout({
@@ -36,7 +38,7 @@ export default async function RootLayout({
           crossOrigin="anonymous"></script>
       </head>
       <body
-        className={`${geistSans.variable} ${getSaira.variable} min-h-screen overflow-x-hidden  antialiased`}
+        className={`${inter.variable} ${outfit.variable} ${getSaira.variable} min-h-screen overflow-x-hidden antialiased bg-[#0B1120] text-slate-100 font-inter`}
       >
 
         <Providers>

@@ -17,7 +17,7 @@ const Report_bug = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitted, setSubmitted] = useState(false)
 
-    const handleInputChange = (e: any) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target
         setform_Data(prev => ({
             ...prev,
@@ -25,13 +25,13 @@ const Report_bug = () => {
         }))
     }
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsSubmitting(true)
         //console.log(form_Data)
         try {
             //console.log("Submitting bug report...",form_Data)
-            const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/error`, {
+            await fetch(`${process.env.NEXT_PUBLIC_URL}/api/error`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

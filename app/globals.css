@@ -8,8 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-roboto-slab: "Roboto Slab", serif;
-
+  --font-inter: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-saira: "Saira", sans-serif;
 }
 
 @layer utilities {
@@ -51,9 +52,23 @@
 }
 
 body {
- background: var(--background);
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-roboto-slab);
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+  .glass-card {
+    @apply bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400;
+  }
+  .premium-glow {
+    @apply relative before:absolute before:inset-0 before:-z-10 before:translate-y-[2px] before:scale-[0.98] before:blur-[12px] before:bg-[#00C896]/20;
+  }
 }
 
 .backgroundti {

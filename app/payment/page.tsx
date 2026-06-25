@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Heart, QrCode, Copy, Check } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { redirect } from 'next/navigation';
+import Image from 'next/image';
 
 // === Configuration ===
 // TODO: Update these with your actual details
@@ -85,10 +86,12 @@ const PremiumPaymentPage: React.FC = () => {
             <div className="w-full flex flex-col items-center animate-fadeIn">
               <div className="bg-white p-3 rounded-2xl shadow-sm shadow-gray-900/20 mb-5 ring-4 ring-white/5">
                 {/* REPLACE src below with your actual QR code image path */}
-                <img
+                <Image
                   src={PAYMENT_CONFIG.qrCodeImgPath}
                   alt="Scan to Pay"
-                  className="w-40 h-40 object-contain"
+                  width={160}
+                  height={160}
+                  className="object-contain"
                 />
               </div>
 
@@ -128,11 +131,11 @@ const PremiumPaymentPage: React.FC = () => {
         {/* Footer Action Button (matching the "Done" button style) */}
         <div className="mt-8">
           <button
-            onClick={handleredirect => {
+            onClick={() => {
               redirect("/thankyou");
             }}
             className="w-full bg-gray-700 cursor-pointer hover:from-gray-600 hover:to-gray-700 text-white py-3.5 rounded-2xl font-medium text-base shadow-lg shadow-gray-500/25 flex items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-0.5 active:scale-95">
-            I've Sent the Support <Heart size={18} className="text-gray-200 fill-gray-200/30" />
+            I&apos;ve Sent the Support <Heart size={18} className="text-gray-200 fill-gray-200/30" />
           </button>
           <p className="text-slate-500 text-xs mt-3">Thank you for fueling the project!</p>
         </div>

@@ -24,7 +24,7 @@ const VideoKitPage = (props: card_data) => {
       router.push(`/login/${id}/`);
     }
 
-  }, [status, id]);
+  }, [status, id, router]);
 
     const [copied, setCopied] = useState(false);
   

@@ -1,5 +1,5 @@
 import IdComponenets from '@/components/IdComponenets';
-import { getCardData, getCurrentData } from '@/lib/actions/general.action';
+import { getCurrentData } from '@/lib/actions/general.action';
 import React from 'react'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';

@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { useState } from "react";
+
 import Link from "next/link";
 
 export default function AdminLayout({
@@ -10,8 +10,7 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data: session, status } = useSession();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { status } = useSession();
 
   // If no session exists and page is not login, redirect to login
   if (status === "unauthenticated" && window.location.pathname !== "/admin/Admin_logni_1043") {

@@ -8,7 +8,7 @@ export async function POST(req: Request) {
         email,
         issue
       
-      } = body as any;
+      } = body as Record<string, unknown>;
   
       ////console.log("Received data:", body);
   

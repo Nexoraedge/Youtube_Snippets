@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface CardData {
@@ -23,13 +22,11 @@ interface CardData {
 }
 
 export default function UploadPage() {
-  const router = useRouter();
   const [uploading, setUploading] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [techStackInput, setTechStackInput] = useState("");
   const [message, setMessage] = useState({ type: "", content: "" });
-  const [id, setId] = useState(1);
 
 
 // Update your handleTextChange function
@@ -37,7 +34,7 @@ export default function UploadPage() {
 const handleTextChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
   const { name, value } = e.target;
   
-  let updatedFormData = { ...formData, [name]: value };
+  const updatedFormData = { ...formData, [name]: value };
   
   // If updating the link field, extract ID from it
   if (name === "link" && value.includes("localhost:3000/")) {
@@ -46,7 +43,6 @@ const handleTextChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     
     if (!isNaN(numericId)) {
       updatedFormData.id = numericId;
-      setId(numericId);
     }
   }
   
@@ -208,7 +204,7 @@ const [formData, setFormData] = useState<CardData>({
         throw new Error(errorData.error || "Failed to submit data");
       }
   
-      const result = await response.json();
+      await response.json();
       setMessage({ type: "success", content: "Project added successfully!" });
   
       // Reset form after successful submission
@@ -232,10 +228,9 @@ const [formData, setFormData] = useState<CardData>({
         ytvidlink: "",
         share_link: "",
       });
-      setId(newId);
       setPreviewImage(null);
       setCoverPreview(null);
-    } catch (error) {
+    } catch {
       // console.error("Submission error:", error);
       setMessage({ type: "error", content: "Failed to save project data" });
     }

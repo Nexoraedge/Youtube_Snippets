@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       links = [], 
       ytvidlink, 
       share_link 
-    } = body as any;
+    } = body as Record<string, unknown>;
 
     //console.log("Received data:", body);
 
@@ -29,9 +29,9 @@ export async function POST(req: Request) {
     // Format links as a proper PostgreSQL array of JSONB objects
     let linksPrepared = [];
     try {
-      linksPrepared = Array.isArray(links) ? links : JSON.parse(links || '[]');
+      linksPrepared = Array.isArray(links) ? links : JSON.parse((typeof links === 'string' ? links : '[]') || '[]');
       // Ensure each link has required fields
-      linksPrepared = linksPrepared.map((link: any) => ({
+      linksPrepared = linksPrepared.map((link: Record<string, unknown>) => ({
         id: link.id || 0,
         img: link.img || '',
         link: link.link || '',

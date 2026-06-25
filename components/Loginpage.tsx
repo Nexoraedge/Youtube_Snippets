@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react'
 
 
 const Login_page = () => {
-    const {data:session , status} = useSession()
+    const { status } = useSession()
     if(status === 'authenticated'){
         redirect('/dashboard')
     }

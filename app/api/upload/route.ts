@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     const buffer = new Uint8Array(arrayBuffer);
 
     // Upload the file to Supabase Storage
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from("projectimages") // Make sure this bucket exists in your Supabase project
       .upload(fileName, buffer, {
         contentType: file.type,
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-export async function POST_Error(req:Request) {
+export async function POST_Error() {
   
 }
 

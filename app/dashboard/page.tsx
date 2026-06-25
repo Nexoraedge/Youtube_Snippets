@@ -2,16 +2,14 @@
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { DummyData } from '@/constents/Data'
 import Card_Content from '@/components/Card_Content';
 import { getCardData } from '@/lib/actions/general.action';
 
 const Page = () => {
-  const [card_passingdata, setCard_passingdata] = useState([])
-  let a: any;
+  const [card_passingdata, setCard_passingdata] = useState<card_data[]>([])
 
   const [datastatus, setDatastatus] = useState("loading");
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   const container = {
     hidden: { opacity: 0 },
@@ -26,8 +24,8 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       setDatastatus("loading");
-      a = await getCardData();
-      setCard_passingdata(a);
+      const fetchedData = await getCardData();
+      setCard_passingdata(fetchedData);
       setDatastatus("authenticated");
     }
     fetchData();

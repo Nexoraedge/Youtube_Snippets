@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   if (status === "unauthenticated") {
     redirect("/login");

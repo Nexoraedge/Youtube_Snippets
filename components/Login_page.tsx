@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 import Loginpage from "./Loginpage";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
@@ -14,7 +14,7 @@ const Login_page = ({
   currentData: card_data;
   uid: number;
 }) => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   
 

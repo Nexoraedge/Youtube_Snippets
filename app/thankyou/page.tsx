@@ -24,7 +24,7 @@ const ThankYouPage: React.FC = () => {
           Thank You!
         </h1>
         <p className="text-slate-400 text-lg mb-10">
-          You've fueled my day. Enjoy your Chai!
+          You&apos;ve fueled my day. Enjoy your Chai!
         </p>
 
         {/* Done Button */}

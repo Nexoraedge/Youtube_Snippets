@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const Card_Content = ({data}: {data: card_data}) => {
-  const { title, description, techstack, link, img , id } = data;  
+  const { title, description, techstack, img , id } = data;  
    
   return (
     <motion.div

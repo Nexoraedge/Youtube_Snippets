@@ -2,7 +2,6 @@
 import { useSession, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
 import React, { useState, useEffect, useRef } from 'react'
 
 const Navbar = () => {
@@ -13,8 +12,8 @@ const Navbar = () => {
 
   const handleToggle = () => setOpen(prev => !prev);
 
-  const handleClickOutside = (e: any) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+  const handleClickOutside = (e: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
       setOpen(false);
     }
   };
@@ -27,18 +26,28 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className='w-full z-50 h-20 flex items-center fixed top-0 justify-between px-10 sm:px-15 bg-black'>
-      <Link href={session?.user ? "/dashboard" : '/'}>
-        <Image src="/img/avatar.jpg" alt="logo" width={50} height={50} className='rounded-md object-contain' />
+    <header className='w-full z-50 h-20 flex items-center fixed top-0 justify-between px-10 sm:px-15 glass border-b border-white/5'>
+      <Link href={session?.user ? "/dashboard" : '/'} className="flex items-center gap-3 group">
+        <Image src="/img/avatar.jpg" alt="logo" width={40} height={40} className='rounded-full object-cover ring-2 ring-white/10 group-hover:ring-[#00C896]/50 transition-all duration-300' />
+        <span className="font-outfit font-bold text-xl tracking-wide hidden sm:block text-white">DhoniDev-Ai</span>
       </Link>
 
       <nav className='flex items-center justify-between'>
-        <ul className='list-none flex max-sm:hidden gap-12'>
-          <li className='hover-text cursor-pointer flex gap-1'>
-            <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} /> Resources
+        <ul className='list-none flex max-sm:hidden gap-8 items-center text-sm font-medium'>
+          <li>
+            <Link href={'/startups'} className='text-zinc-400 hover:text-white transition-colors duration-200'>Startups</Link>
           </li>
-          <li className='hover-text cursor-pointer flex gap-1'>
-            <Link href={'/about'}>About us</Link>
+          <li>
+            <Link href={'/consult'} className='text-zinc-400 hover:text-white transition-colors duration-200 flex items-center gap-1.5'>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00C896] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C896]"></span>
+              </span>
+              Consulting
+            </Link>
+          </li>
+          <li>
+            <Link href={'/about'} className='text-zinc-400 hover:text-white transition-colors duration-200'>About us</Link>
           </li>
         </ul>
       </nav>
