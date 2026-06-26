@@ -43,7 +43,7 @@ const VideoKitPage = (props: card_data) => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="glass-card h-auto lg:h-[82vh] overflow-y-auto rounded-3xl p-6 sm:p-8 flex flex-col gap-6">
+          <div data-lenis-prevent="true" className="glass-card h-[60vh] lg:h-[82vh] overflow-y-auto rounded-3xl p-6 sm:p-8 flex flex-col gap-6">
             
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 border-b border-borderSubtle pb-8 mb-2">
               <div className="shrink-0 rounded-2xl overflow-hidden shadow-md border border-borderSubtle/60 group-hover:shadow-lg transition-all bg-surface flex items-center justify-center">
@@ -173,7 +173,7 @@ const VideoKitPage = (props: card_data) => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         >
-          <div className="glass-card h-auto lg:h-[82vh] overflow-y-auto rounded-3xl p-6 sm:p-8 flex flex-col gap-8">
+          <div data-lenis-prevent="true" className="glass-card h-[60vh] lg:h-[82vh] overflow-y-auto rounded-3xl p-6 sm:p-8 flex flex-col gap-8">
             <div className="aspect-video w-full bg-borderSubtle rounded-2xl overflow-hidden shadow-md shrink-0 border border-borderSubtle/50">
               <iframe
                 className="w-full h-full"

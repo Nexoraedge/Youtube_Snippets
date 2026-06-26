@@ -51,8 +51,7 @@ export const metadata: Metadata = {
     images: ["https://dhonidev-ai.vercel.app/img/logo.png"],
   },
   verification: {
-    // IMPORTANT: Replace this with your actual Google Search Console HTML tag content!
-    google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
+    google: "D87VTnJsolS_W9I3yySE_xQryr4Lbl-y_u53LdVgtS8",
   },
 };
 
