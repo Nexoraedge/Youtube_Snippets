@@ -3,7 +3,7 @@ import { useSession, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState, useEffect, useRef } from 'react'
-
+import { LayoutDashboard, Settings, LogOut } from 'lucide-react'
 const Navbar = () => {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
@@ -26,38 +26,36 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className='w-full z-50 h-20 flex items-center fixed top-0 justify-between px-10 sm:px-15 glass border-b border-white/5'>
+    <header className='w-full z-50 h-20 sm:h-24 flex items-center fixed top-0 justify-between px-6 sm:px-12 bg-background/80 backdrop-blur-xl border-b border-borderSubtle transition-all duration-300'>
       <Link href={session?.user ? "/dashboard" : '/'} className="flex items-center gap-3 group">
-        <Image src="/img/avatar.jpg" alt="logo" width={40} height={40} className='rounded-full object-cover ring-2 ring-white/10 group-hover:ring-[#00C896]/50 transition-all duration-300' />
-        <span className="font-outfit font-bold text-xl tracking-wide hidden sm:block text-white">DhoniDev-Ai</span>
+        <Image src="/img/logo.png" alt="logo" width={40} height={40} className='rounded-full object-cover ring-2 ring-borderSubtle group-hover:ring-accentPrimary/50 transition-all duration-300 shadow-md' />
+        <span className="font-outfit font-bold text-xl tracking-wide hidden sm:block text-textPrimary">DhoniDev-Ai</span>
       </Link>
 
       <nav className='flex items-center justify-between'>
-        <ul className='list-none flex max-sm:hidden gap-8 items-center text-sm font-medium'>
+        <ul className='list-none flex max-sm:hidden gap-8 items-center text-sm font-semibold'>
           <li>
-            <Link href={'/startups'} className='text-zinc-400 hover:text-white transition-colors duration-200'>Startups</Link>
+            <Link href={'/startups'} className='text-textMuted hover:text-accentPrimary transition-colors duration-200'>Startups</Link>
           </li>
           <li>
-            <Link href={'/consult'} className='text-zinc-400 hover:text-white transition-colors duration-200 flex items-center gap-1.5'>
+            <Link href={'/consult'} className='text-textMuted hover:text-accentPrimary transition-colors duration-200 flex items-center gap-1.5'>
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00C896] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C896]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accentPrimary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accentPrimary"></span>
               </span>
               Consulting
             </Link>
           </li>
           <li>
-            <Link href={'/about'} className='text-zinc-400 hover:text-white transition-colors duration-200'>About us</Link>
+            <Link href={'/about'} className='text-textMuted hover:text-accentPrimary transition-colors duration-200'>About us</Link>
           </li>
         </ul>
       </nav>
 
       {status === 'unauthenticated' ? (
         <Link href={'/login'}>
-          <button className="relative inline-flex h-12 max-sm:h-10  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-            <span className="absolute inset-[-1000%]  bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full max-sm:px-3  px-5 py-1 text-sm max-sm:text-xs font-medium text-white backdrop-blur-3xl">
-              Login                                </span>
+          <button className="h-10 sm:h-12 px-6 sm:px-8 rounded-full bg-textPrimary text-surface text-xs sm:text-sm font-bold tracking-wide hover:bg-accentPrimary hover:-translate-y-0.5 transition-all duration-300 shadow-md">
+            Login
           </button>
         </Link>
       ) : (
@@ -78,27 +76,33 @@ const Navbar = () => {
             </button>
 
             {open && (
-              <div className="absolute top-16 right-0 w-44 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 animate-fade-in">
-                <ul className=" text-sm py-2 text-gray-700 dark:text-gray-200">
-                  <li>
-                    <Link href="/dashboard" className="flex gap-2 items-center px-4 py-2  bg-gray-700 ">
-                      <Image src={"/asset/home.gif"} alt="dashboard" width={20} height={20} />Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link href="/dashboard" className=" px-4 py-2 text-gray-500 items-center flex gap-2">
-                      <Image src={"/asset/lock.gif"} alt="locked" width={20} height={20} />Settings
-                    </Link>
-                  </li>
-                </ul>
-                <div className=" border-t dark:border-gray-600">
-                  <button
-                    onClick={() => signOut({ callbackUrl: '/' })}
-                    className="w-full text-left cursor-pointer flex gap-2 items-center px-4 py-2 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-red-400 dark:hover:text-white"
-                  >
-                    <Image src={"/asset/exit.gif"} alt="signOut" width={20} height={20} />
-                    Sign out
-                  </button>
+              <div className="absolute top-[3.5rem] right-0 w-52 bg-surface border border-borderSubtle rounded-2xl shadow-xl animate-fade-in overflow-hidden flex flex-col p-2">
+                
+                {/* Mobile-only Nav Links */}
+                <div className="sm:hidden flex flex-col border-b border-borderSubtle pb-1 mb-1">
+                  <Link href="/startups" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-textPrimary hover:bg-textPrimary/5 rounded-xl transition-colors">
+                    Startups
+                  </Link>
+                  <Link href="/consult" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-textPrimary hover:bg-textPrimary/5 rounded-xl transition-colors">
+                    Consulting
+                  </Link>
+                  <Link href="/about" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-textPrimary hover:bg-textPrimary/5 rounded-xl transition-colors">
+                    About us
+                  </Link>
                 </div>
+
+                <Link href="/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-textPrimary hover:bg-textPrimary/5 rounded-xl transition-colors">
+                  <LayoutDashboard size={18} className="text-textMuted" />
+                  Dashboard
+                </Link>
+                <div className="h-px w-full bg-borderSubtle my-1" />
+                <button
+                  onClick={() => signOut({ callbackUrl: '/' })}
+                  className="w-full text-left flex items-center gap-3 px-4 py-3 text-sm font-medium text-red-500 hover:bg-red-500/10 rounded-xl transition-colors"
+                >
+                  <LogOut size={18} className="text-red-500" />
+                  Sign out
+                </button>
               </div>
             )}
           </div>

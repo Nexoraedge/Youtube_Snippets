@@ -1,36 +1,39 @@
 import React from 'react';
 import { Coffee, Heart } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import Link from 'next/link';
 
 const ThankYouPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      {/* Glassmorphism Card */}
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 font-manrope relative overflow-hidden">
       <Navbar />
+      
+      {/* Editorial Card */}
       <div
-        className="relative w-full max-w-md bg-[#1A1D21] backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center"
-        style={{
-          boxShadow:
-            '0 0 40px -10px rgba(59, 130, 246, 0.15), 0 0 40px -10px rgba(249, 115, 22, 0.15)',
-        }}
+        className="relative w-full max-w-md bg-surface border border-borderSubtle rounded-3xl p-10 text-center shadow-md z-10 mt-14 animate-fade-in"
       >
-        {/* Coffee Cup Icon with Glow */}
-        <div className="mb-6 flex justify-center">
-          <Coffee className="w-16 h-16 text-orange-200/80 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+        {/* Icon */}
+        <div className="mb-8 flex justify-center">
+          <div className="bg-background p-4 rounded-full border border-borderSubtle">
+            <Coffee className="w-12 h-12 text-accentPrimary" />
+          </div>
         </div>
 
         {/* Thank You Message */}
-        <h1 className="text-4xl font-serif font-bold text-white mb-2 tracking-wide">
+        <h1 className="text-5xl font-fraunces font-medium text-textPrimary mb-4 tracking-tight">
           Thank You!
         </h1>
-        <p className="text-slate-400 text-lg mb-10">
-          You&apos;ve fueled my day. Enjoy your Chai!
+        <p className="text-textMuted text-lg mb-10 leading-relaxed">
+          Your support fuels my next open-source build. Enjoy your Chai!
         </p>
 
         {/* Done Button */}
-        <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3.5 rounded-full font-medium text-lg flex items-center justify-center gap-2 shadow-sm shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 active:scale-95">
-          Done <Heart size={20} className="text-red-200 fill-red-200/50" />
-        </button>
+        <Link 
+          href="/"
+          className="w-full bg-textPrimary hover:bg-black text-surface py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-all duration-300 hover:-translate-y-1"
+        >
+          Return Home <Heart size={16} className="text-accentPrimary fill-accentPrimary" />
+        </Link>
       </div>
     </div>
   );

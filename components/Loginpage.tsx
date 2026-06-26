@@ -1,81 +1,84 @@
 "use client"
-import {signIn } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import { redirect } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-
+import { Github, Twitter, Facebook } from 'lucide-react'
 
 const Login_page = () => {
     const { status } = useSession()
-    if(status === 'authenticated'){
+    if (status === 'authenticated') {
         redirect('/dashboard')
     }
-   
-    
-    
+
     return (
-        <>
-        
-            <div className="min-h-screen  absolute top-0 left-0 right-0  opacity-60 max-sm:opacity-40 -z-20" style={{
-                backgroundImage: "url('../img/bg-dev.jpeg')",
+        <main className="min-h-screen relative flex items-center justify-center p-4">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0" style={{
+                backgroundImage: "url('/asset/bg-login.png')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-
-            }}></div>
-            <div className="flex gap-7 md:flex-row flex-col justify-center items-center min-h-screen max-md:justify-center mx-10 max-md:mx-5 max-md:py-10">
-               
-                <div className=" backdrop-blur-sm border-[1px]    flex flex-col  px-10 py-7 rounded-t-full rounded-2xl items-center justify-center ">
-                  <Link href={'/'} > <Image src={"/img/avatar.jpg"}  alt="logo" width={100} height={100} className='rounded-full my-5 object-contain' /> </Link>
-                    <div className="flex flex-col gap-5 items-center">
-                        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-[#059393]   to-[#04c6d7]">Login</h1>
-                        <div className="container py-5 flex flex-col items-center gap-2.5">
-                            {/* Google */}
-                            <button
-                            onClick={() => signIn("google")}
-                             type="button" className="text-zinc-100 hover:text-zinc-300 cursor-pointer border-[1px] focus:border-0 w-[100%]  focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2">
-                                <svg className="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
-                                    <path fillRule="evenodd" d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" clipRule="evenodd" />
-                                </svg>
-                                Sign in with Google
-                            </button>
-{/* github */}
-                            <button 
-                            onClick={() => signIn("github")}
-                            type="button" className="text-zinc-100 hover:text-zinc-300 cursor-pointer border-[1px] focus:border-0 w-[100%]  focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2">
-                                <svg className="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clipRule="evenodd" />
-                                </svg>
-                                Sign in with Github
-                            </button>
-                            {/* facebook */}
-                            <button
-                            onClick={() => signIn("facebook")}
-                             type="button" className="text-zinc-100 hover:text-zinc-300 cursor-pointer border-[1px] focus:border-0 w-[100%]  focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2">
-                                <svg className="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                                    <path fillRule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clipRule="evenodd" />
-                                </svg>
-                                Sign in with Facebook
-                            </button>
-
-                            <button
-                            onClick={() => signIn("x")}
-                            type="button" className="text-zinc-400 hover:text-zinc-600 cursor-pointer border-[1px] focus:border-0 w-[100%]  focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mb-2">
-                                 <Image
-                                                  src="/asset/lock.gif"
-                                                  alt="Not Available"
-                                                  width={100}
-                                                  height={100}
-                                                  className="w-4 h-4 me-2"
-                                                />
-                                Sign in with Twitter
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
+            }}>
+                {/* Subtle overlay to ensure form readability and premium feel */}
+                <div className="absolute inset-0 bg-background/10 backdrop-blur-[4px]"></div>
             </div>
-        </>
+
+            {/* Login Card */}
+            <div className="relative z-10 w-full max-w-md bg-surface/80 backdrop-blur-2xl border border-borderSubtle rounded-[2.5rem] p-10 sm:p-12 shadow-2xl flex flex-col items-center">
+
+                <Link href={'/'} className="group relative mb-8">
+                    <div className="absolute inset-0 bg-accentPrimary/20 blur-xl rounded-full group-hover:bg-accentPrimary/40 transition-colors duration-500"></div>
+                    <Image src={"/img/logo.png"} alt="logo" width={80} height={80} className='relative rounded-full ring-4 ring-background shadow-xl object-contain group-hover:scale-105 transition-transform duration-500' />
+                </Link>
+
+                <h1 className="text-3xl font-fraunces font-bold text-textPrimary mb-2 tracking-tight">Welcome Back</h1>
+                <p className="text-textMuted text-sm font-medium mb-10 text-center">Sign in to access your dashboard</p>
+
+                <div className="w-full flex flex-col gap-4">
+                    {/* Google */}
+                    <button
+                        onClick={() => signIn("google")}
+                        className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-black border border-gray-200 rounded-2xl py-3.5 px-4 font-semibold text-sm transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                        <svg className="w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                        </svg>
+                        Continue with Google
+                    </button>
+
+                    {/* Github */}
+                    <button
+                        onClick={() => signIn("github")}
+                        className="w-full flex items-center justify-center gap-3 bg-[#24292F] hover:bg-[#1b1f23] text-white rounded-2xl py-3.5 px-4 font-semibold text-sm transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                        <Github className="w-5 h-5" />
+                        Continue with GitHub
+                    </button>
+
+                    {/* Facebook */}
+                    <button
+                        onClick={() => signIn("facebook")}
+                        className="w-full flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166fe5] text-white rounded-2xl py-3.5 px-4 font-semibold text-sm transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                        <Facebook className="w-5 h-5 fill-current" />
+                        Continue with Facebook
+                    </button>
+
+                    {/* Twitter */}
+                    <button
+                        disabled
+                        className="w-full flex items-center justify-center gap-3 bg-surface/50 border border-borderSubtle text-textMuted rounded-2xl py-3.5 px-4 font-semibold text-sm opacity-60 cursor-not-allowed mt-2"
+                    >
+                        <Twitter className="w-5 h-5" />
+                        Twitter (Coming Soon)
+                    </button>
+                </div>
+            </div>
+        </main>
     )
 }
 

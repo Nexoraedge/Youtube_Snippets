@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
 import Footer from "@/components/Footer";
+import Loader from "@/components/Loader";
 
 
 
@@ -17,7 +18,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     return (
       <>
         <div className="h-screen flex justify-center items-center">
-          <div className="loader"></div>
+          <Loader />
         </div>
       </>
     );

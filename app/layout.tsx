@@ -1,28 +1,59 @@
 
 import type { Metadata } from "next";
-import { Inter, Outfit, Saira } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
 import { Analytics } from "@vercel/analytics/next"
 import Report_bug from "@/components/Report_bug";
+import SmoothScroll from "@/components/SmoothScroll";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-});
-const getSaira = Saira({
-  variable: "--font-saira",
-  subsets: ["latin"],
+  axes: ["SOFT", "WONK"],
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "DhoniDev-Ai",
-  description: "DhoniDev-Ai - Turning Code into Digital Empires",
+  title: {
+    default: "DhoniDev-Ai | Turning Code into Digital Empires",
+    template: "%s | DhoniDev-Ai",
+  },
+  description: "DhoniDev-Ai crafts production-ready web applications, high-performance AI tools, and elegant user experiences for the modern web.",
+  keywords: ["DhoniDev-Ai", "Next.js", "React", "Web Development", "AI Developer", "Software Consultant"],
+  authors: [{ name: "DhoniDev-Ai" }],
+  creator: "DhoniDev-Ai",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://dhonidev-ai.vercel.app/",
+    siteName: "DhoniDev-Ai",
+    title: "DhoniDev-Ai | Turning Code into Digital Empires",
+    description: "Production-ready web applications, high-performance AI tools, and elegant user experiences for the modern web.",
+    images: [
+      {
+        url: "https://dhonidev-ai.vercel.app/img/logo.png",
+        width: 800,
+        height: 600,
+        alt: "DhoniDev-Ai Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DhoniDev-Ai | Turning Code into Digital Empires",
+    description: "Production-ready web applications, high-performance AI tools, and elegant user experiences.",
+    creator: "@DhoniAi",
+    images: ["https://dhonidev-ai.vercel.app/img/logo.png"],
+  },
+  verification: {
+    // IMPORTANT: Replace this with your actual Google Search Console HTML tag content!
+    google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
+  },
 };
 
 export default async function RootLayout({
@@ -38,14 +69,15 @@ export default async function RootLayout({
           crossOrigin="anonymous"></script>
       </head>
       <body
-        className={`${inter.variable} ${outfit.variable} ${getSaira.variable} min-h-screen overflow-x-hidden antialiased bg-[#0B1120] text-slate-100 font-inter`}
+        className={`${fraunces.variable} ${manrope.variable} min-h-screen overflow-x-hidden antialiased bg-background text-textPrimary font-manrope`}
       >
 
         <Providers>
-
-          {children}
-          <Report_bug />
-          <Analytics />
+          <SmoothScroll>
+            {children}
+            <Report_bug />
+            <Analytics />
+          </SmoothScroll>
         </Providers>
 
       </body>

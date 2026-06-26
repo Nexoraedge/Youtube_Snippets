@@ -83,38 +83,38 @@ export default function CheckoutPage({ params }: { params: Promise<{ tier: strin
   };
 
   return (
-    <main className="min-h-screen bg-[#050505] text-slate-100 flex flex-col font-inter">
+    <main className="min-h-screen flex flex-col font-inter">
       <Navbar />
-      <ToastContainer theme="dark" />
+      <ToastContainer theme="light" />
       
       <div className="flex-1 pt-32 pb-20 px-4 sm:px-6 max-w-4xl mx-auto w-full">
         <div className="flex flex-col md:flex-row gap-8 items-start">
           
           {/* Payment Instructions & QR */}
           <div className="w-full md:w-1/2 glass-card rounded-3xl p-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Complete Payment</h2>
-            <p className="text-zinc-400 mb-6 text-sm">
-              Scan the QR code below or use the UPI ID to pay <span className="font-bold text-white">₹{tierInfo.price}</span> for your {tierInfo.name}.
+            <h2 className="text-2xl font-bold text-textPrimary mb-2">Complete Payment</h2>
+            <p className="text-textMuted mb-6 text-sm">
+              Scan the QR code below or use the UPI ID to pay <span className="font-bold text-textPrimary">₹{tierInfo.price}</span> for your {tierInfo.name}.
             </p>
 
-            <div className="bg-white p-4 rounded-2xl flex items-center justify-center mb-6 w-48 mx-auto">
+            <div className="bg-surface p-4 rounded-2xl flex items-center justify-center mb-6 w-48 mx-auto shadow-sm border border-borderSubtle/50">
               {/* Ensure you have /public/img/QR.png available */}
               <Image src="/img/QR.png" alt="UPI QR Code" width={160} height={160} className="object-contain" />
             </div>
 
-            <div className="flex items-center justify-between bg-black/40 border border-white/10 rounded-xl p-3 mb-6">
-              <span className="text-sm font-mono text-zinc-300">{UPI_ID}</span>
+            <div className="flex items-center justify-between bg-surface border border-borderSubtle rounded-xl p-3 mb-6 shadow-sm">
+              <span className="text-sm font-mono text-textPrimary">{UPI_ID}</span>
               <button 
                 onClick={handleCopy}
-                className="text-zinc-400 hover:text-white transition-colors"
+                className="text-textMuted hover:text-accentPrimary transition-colors"
               >
                 {copied ? <CheckCircle2 size={18} className="text-[#00C896]" /> : <Copy size={18} />}
               </button>
             </div>
             
-            <div className="flex items-start gap-3 bg-[#00C896]/10 border border-[#00C896]/20 rounded-xl p-4">
-              <ShieldCheck className="text-[#00C896] shrink-0 mt-0.5" size={20} />
-              <p className="text-xs text-zinc-300">
+            <div className="flex items-start gap-3 bg-accentPrimary/5 border border-accentPrimary/20 rounded-xl p-4">
+              <ShieldCheck className="text-accentPrimary shrink-0 mt-0.5" size={20} />
+              <p className="text-xs text-textMuted font-medium">
                 This is a manual verification system. Once you pay, enter your 12-digit UTR below. We will verify the payment and provide your access link.
               </p>
             </div>
@@ -122,15 +122,15 @@ export default function CheckoutPage({ params }: { params: Promise<{ tier: strin
 
           {/* Form */}
           <div className="w-full md:w-1/2 glass-card rounded-3xl p-8">
-            <h3 className="text-xl font-bold text-white mb-6">Confirm Your Order</h3>
+            <h3 className="text-xl font-bold text-textPrimary mb-6">Confirm Your Order</h3>
             
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-1.5">Full Name</label>
+                <label className="block text-sm font-semibold text-textPrimary mb-1.5">Full Name</label>
                 <input 
                   type="text" 
                   required
-                  className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#00C896]/50 transition-all"
+                  className="w-full bg-surface border border-borderSubtle rounded-xl px-4 py-3 text-textPrimary focus:outline-none focus:ring-2 focus:ring-accentPrimary/50 transition-all shadow-sm"
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={e => setFormData({...formData, name: e.target.value})}
@@ -138,11 +138,11 @@ export default function CheckoutPage({ params }: { params: Promise<{ tier: strin
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-1.5">Email Address</label>
+                <label className="block text-sm font-semibold text-textPrimary mb-1.5">Email Address</label>
                 <input 
                   type="email" 
                   required
-                  className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#00C896]/50 transition-all"
+                  className="w-full bg-surface border border-borderSubtle rounded-xl px-4 py-3 text-textPrimary focus:outline-none focus:ring-2 focus:ring-accentPrimary/50 transition-all shadow-sm"
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={e => setFormData({...formData, email: e.target.value})}
@@ -150,27 +150,27 @@ export default function CheckoutPage({ params }: { params: Promise<{ tier: strin
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-1.5">12-Digit UTR Number</label>
+                <label className="block text-sm font-semibold text-textPrimary mb-1.5">12-Digit UTR Number</label>
                 <input 
                   type="text" 
                   required
                   maxLength={12}
                   minLength={12}
-                  className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-[#00C896]/50 transition-all"
+                  className="w-full bg-surface border border-borderSubtle rounded-xl px-4 py-3 text-textPrimary font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-accentPrimary/50 transition-all shadow-sm"
                   placeholder="123456789012"
                   value={formData.utr}
                   onChange={e => setFormData({...formData, utr: e.target.value.replace(/[^0-9]/g, '')})}
                 />
-                <p className="text-xs text-zinc-500 mt-2">Find this in your UPI app (GPay, PhonePe, Paytm) after successful payment.</p>
+                <p className="text-xs text-textMuted mt-2 font-medium">Find this in your UPI app (GPay, PhonePe, Paytm) after successful payment.</p>
               </div>
 
               <button 
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#00C896] hover:bg-[#05e0ac] text-black font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100 flex justify-center items-center gap-2 mt-4"
+                className="w-full bg-[#1C1917] hover:bg-black text-white font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100 flex justify-center items-center gap-2 mt-4 shadow-md"
               >
                 {loading ? (
-                  <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
                   'Submit & Verify'
                 )}

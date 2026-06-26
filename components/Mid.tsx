@@ -5,13 +5,11 @@ const Mid = () => {
   return (
     <section id="who" className="w-full pb-16 px-4">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-50">
+        <div className="flex flex-col mb-12">
+          <p className="text-sm uppercase tracking-widest text-accentPrimary font-semibold mb-2">Capabilities</p>
+          <h2 className="text-3xl sm:text-4xl font-fraunces font-medium tracking-tight text-textPrimary">
             Who is this for?
           </h2>
-          <div className="hidden sm:inline-flex text-xs text-slate-400">
-            Tailored for different roles
-          </div>
         </div>
         <Whoissec />
       </div>

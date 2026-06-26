@@ -13,7 +13,7 @@ const Page = () => {
   // For now, removing unused session variables to satisfy ESLint
   
   return (
-    <main className="min-h-screen bg-[#050505] text-slate-100">
+    <main className="min-h-screen">
      
 
 
