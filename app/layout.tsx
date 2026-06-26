@@ -70,7 +70,22 @@ export default async function RootLayout({
       <body
         className={`${fraunces.variable} ${manrope.variable} min-h-screen overflow-x-hidden antialiased bg-background text-textPrimary font-manrope`}
       >
-
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "DhoniDev-Ai",
+              "url": "https://dhonidev-ai.vercel.app/",
+              "sameAs": [
+                "https://youtube.com/@DhoniDev-Ai",
+                "https://www.youtube.com/channel/UCLURA5d5DmvU_4q9pp9tyQg"
+              ]
+            })
+          }}
+        />
+        
         <Providers>
           <SmoothScroll>
             {children}
