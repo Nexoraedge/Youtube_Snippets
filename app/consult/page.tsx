@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ClientWork from '@/components/ClientWork';
 import Link from 'next/link';
 import { MessageCircle, Phone, Video, Check, Code, Megaphone, ArrowUpRight } from 'lucide-react';
 
@@ -160,19 +161,19 @@ export default function ConsultPage() {
                 <Code size={24} />
               </div>
 
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-fraunces font-semibold text-surface mb-3 tracking-tight">Project Enquiry</h3>
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-fraunces font-semibold text-surface mb-3 tracking-tight">Custom Engineering</h3>
               <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-4xl sm:text-5xl font-bold text-surface">Starts at ₹49,999</span>
+                <span className="text-2xl sm:text-3xl font-bold text-accentPrimary">Enterprise & Custom SaaS</span>
               </div>
               <p className="text-surface/70 text-base sm:text-lg mb-10 leading-relaxed font-light max-w-lg">
-                Looking to build a production-ready SaaS or AI tool? Hire me to architect, design, and build your MVP from scratch with uncompromising quality.
+                Skip the agency bloat. Hire me directly to architect, design, and engineer your next AI tool, e-commerce platform, or SaaS MVP with uncompromising quality. Let's discuss your vision and define a custom roadmap.
               </p>
 
               <Link
-                href="mailto:hardikjain2030@gmail.com?subject=Project%20Enquiry"
+                href="mailto:hardikjain2030@gmail.com?subject=Project%20Enquiry%20-%20Discovery%20Call"
                 className="mt-auto inline-flex items-center justify-center py-4 px-8 rounded-full font-bold text-sm bg-accentPrimary text-surface hover:bg-white hover:text-textPrimary transition-all duration-300 shadow-lg hover:shadow-xl w-fit"
               >
-                Discuss Your Project <ArrowUpRight className="ml-2 w-4 h-4" />
+                Book a Free Discovery Call <ArrowUpRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
 
@@ -181,12 +182,12 @@ export default function ConsultPage() {
                 <p className="text-surface/50 text-xs uppercase tracking-widest font-bold mb-6">Standard Deliverables</p>
                 <ul className="space-y-5">
                   {[
-                    'Full Stack Next.js Architecture',
-                    'AI Integration (OpenAI/Gemini)',
-                    'Stripe/LemonSqueezy Billing',
-                    'Supabase/PostgreSQL Backend',
-                    'Premium UI/UX Branding',
-                    'Deployment & Handover'
+                    'Custom SaaS Development',
+                    'High-Conversion Landing Pages',
+                    'Global Payment Integration',
+                    'Technical SEO & Performance',
+                    'AI & LLM Integration',
+                    'Premium UI/UX Architecture'
                   ].map((feature, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-surface/90 font-medium">
                       <Check size={18} className="shrink-0 text-accentPrimary mt-0.5" />
@@ -255,6 +256,8 @@ export default function ConsultPage() {
 
         </div>
       </div>
+      
+      <ClientWork />
 
       <Footer />
     </main>

@@ -1,4 +1,5 @@
 "use client";
+// @ts-ignore
 import { ReactLenis } from 'lenis/react';
 import React from 'react';
 

@@ -4,6 +4,7 @@ import Mid from "@/components/Mid";
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ClientWork from "@/components/ClientWork";
 import WorkShowcase from "@/components/WorkShow";
 import StatsStrip from "@/components/StatsStripe";
 import SupportCTA from "@/components/SupportCta";
@@ -11,21 +12,21 @@ import SupportCTA from "@/components/SupportCta";
 const Page = () => {
   // If you need session/loading, ensure useSession is imported
   // For now, removing unused session variables to satisfy ESLint
-  
+
   return (
     <main className="min-h-screen">
-     
+
 
 
       <Navbar />
       <Hero />
       <Mid />
-      <WorkShowcase />
+      <ClientWork />
       <StatsStrip />
       <SupportCTA />
       <Footer />
-      
-      
+
+
     </main>
   );
 };

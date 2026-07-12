@@ -1,7 +1,23 @@
 import { MetadataRoute } from 'next'
+import { getCardData } from '@/lib/actions/general.action'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dhonidev-ai.vercel.app' // Update this if your Vercel domain changes
+
+  // Fetch all projects dynamically to include them in the sitemap
+  let projects: any[] = [];
+  try {
+    projects = await getCardData();
+  } catch (error) {
+    console.error("Failed to fetch projects for sitemap", error);
+  }
+
+  const projectEntries: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${baseUrl}/${project.id}`,
+    lastModified: new Date(project.created_at || new Date()),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  }));
 
   return [
     {
@@ -28,7 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    // Note: The /:id pages (dynamic VideoKits) will naturally be indexed 
-    // by Google as it follows the links from your dashboard or external shares.
+    ...projectEntries,
   ]
 }

@@ -13,7 +13,7 @@ const WhoIsSec = () => {
           tabIndex={0}
         >
           {/* Unexpanded Desktop State (Visible only on desktop when not hovered) */}
-          <div className="absolute inset-0 p-8 flex flex-col items-center justify-between transition-opacity duration-500 lg:group-hover:opacity-0 lg:group-focus-within:opacity-0 hidden lg:flex">
+          <div className="absolute inset-0 p-8 flex flex-col items-center justify-between transition-all duration-500 lg:group-hover:opacity-0 lg:group-hover:-translate-y-4 lg:group-focus-within:opacity-0 hidden lg:flex">
             <div className="bg-background p-4 rounded-2xl border border-borderSubtle shadow-sm">
               <Image src={img} alt={title} width={40} height={40} className="object-contain" />
             </div>
@@ -27,24 +27,25 @@ const WhoIsSec = () => {
           </div>
 
           {/* Expanded / Mobile State (Fades in on desktop hover, always visible on mobile) */}
-          <div className="relative z-10 flex flex-col h-full justify-end opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100 transition-opacity duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] w-full lg:w-[26rem]">
+          <div className="relative z-10 flex flex-col h-full justify-between opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 w-full lg:w-[26rem]">
             
-            <div className="flex flex-col gap-4 sm:gap-5 w-full">
-              <div className="flex items-center gap-4">
-                <div className="shrink-0 bg-background p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-borderSubtle shadow-sm">
-                  <Image src={img} alt={title} width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-fraunces font-semibold text-textPrimary tracking-wide">
-                  {title}
-                </h3>
-              </div>
+            {/* Top Icon */}
+            <div className="shrink-0 bg-background p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-borderSubtle shadow-sm w-fit transition-transform duration-700 group-hover:scale-105">
+              <Image src={img} alt={title} width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+            </div>
 
-              <p className="text-textMuted leading-relaxed text-sm sm:text-base lg:text-lg">
+            {/* Bottom Text Content */}
+            <div className="flex flex-col gap-4 sm:gap-5 w-full">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-fraunces font-semibold text-textPrimary tracking-wide">
+                {title}
+              </h3>
+
+              <p className="text-textMuted leading-relaxed text-sm sm:text-base lg:text-lg lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-700 delay-100">
                 {description}
               </p>
               
-              <div className="mt-2 inline-flex items-center px-5 py-2.5 rounded-full border border-borderSubtle text-sm font-bold text-textPrimary bg-surface hover:bg-background transition-colors w-fit shadow-sm">
-                Explore <ArrowUpRight className="ml-2 w-4 h-4 text-accentPrimary" />
+              <div className="mt-2 inline-flex items-center px-5 py-2.5 rounded-full border border-borderSubtle text-sm font-bold text-textPrimary bg-surface hover:bg-background transition-colors w-fit shadow-sm group/btn lg:opacity-0 lg:group-hover:opacity-100 duration-700 delay-150">
+                Explore <ArrowUpRight className="ml-2 w-4 h-4 text-accentPrimary group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
               </div>
             </div>
 

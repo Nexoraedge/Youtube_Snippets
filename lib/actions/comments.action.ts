@@ -10,6 +10,7 @@ export type CommentType = {
   user_name: string;
   user_image: string;
   content: string;
+  parent_id?: string | null;
 };
 
 export async function getComments(projectId: number): Promise<CommentType[]> {
@@ -31,7 +32,8 @@ export async function postComment(
   userEmail: string,
   userName: string,
   userImage: string,
-  content: string
+  content: string,
+  parentId?: string | null
 ) {
   if (!userEmail || !content.trim()) {
     throw new Error("Missing required fields");
@@ -44,6 +46,7 @@ export async function postComment(
       user_name: userName,
       user_image: userImage,
       content: content.trim(),
+      parent_id: parentId || null,
     },
   ]);
 
