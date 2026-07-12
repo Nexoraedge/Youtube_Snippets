@@ -19,6 +19,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dhonidev-ai.vercel.app"),
   title: {
     default: "DhoniDev-Ai | Turning Code into Digital Empires",
     template: "%s | DhoniDev-Ai",
@@ -75,12 +76,21 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "DhoniDev-Ai",
-              "url": "https://dhonidev-ai.vercel.app/",
-              "sameAs": [
-                "https://youtube.com/@DhoniDev-Ai",
-                "https://www.youtube.com/channel/UCLURA5d5DmvU_4q9pp9tyQg"
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "name": "DhoniDev-Ai",
+                  "url": "https://dhonidev-ai.vercel.app/",
+                  "sameAs": [
+                    "https://youtube.com/@DhoniDev-Ai",
+                    "https://www.youtube.com/channel/UCLURA5d5DmvU_4q9pp9tyQg"
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "name": "DhoniDev-Ai",
+                  "url": "https://dhonidev-ai.vercel.app/"
+                }
               ]
             })
           }}
