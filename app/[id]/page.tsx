@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import React from 'react'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import CommentSection from '@/components/CommentSection';
 
 export async function generateMetadata(params: RouteParams): Promise<Metadata> {
   const pageid = await params.params;
@@ -74,6 +75,7 @@ const page = async(params:RouteParams) => {
       <Navbar />
       <div className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 pt-28 lg:pt-36 pb-12">
         <IdComponenets {...currentData} />
+        <CommentSection projectId={uid} />
       </div>
       <Footer />
     </main>
